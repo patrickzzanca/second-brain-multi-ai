@@ -6,23 +6,22 @@
   <title>Segundo Cérebro Multi-IA — Guia Prático</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
     
     :root {
-      --bg-page: #FCFCFA;
-      --card-bg: #FFFFFF;
-      --text-main: #1C1B1A;
-      --text-muted: #6B6864;
-      --accent-warm: #C6613F;
-      --accent-soft: #F4EBE6;
-      --border-subtle: #EBE7DF;
+      --bg-cream: #FDF0D5;
+      --navy-deep: #003049;
+      --blue-slate: #669BBC;
+      --red-vibrant: #C1121F;
+      --red-dark: #780000;
+      --border-line: rgba(0, 48, 73, 0.14);
     }
 
     body {
-      background-color: var(--bg-page);
-      color: var(--text-main);
+      background-color: var(--bg-cream);
+      color: var(--navy-deep);
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      line-height: 1.7;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -34,257 +33,306 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    .pill-badge {
-      background: rgba(198, 97, 63, 0.08);
-      color: var(--accent-warm);
+    .border-archive {
+      border-color: var(--border-line);
     }
   </style>
 </head>
-<body class="p-4 sm:p-8 md:p-12">
-  <div class="max-w-[720px] mx-auto">
+<body class="min-h-screen text-[#003049]">
 
-    <!-- Top Badge / Header Metadata -->
-    <header class="mb-10 text-center sm:text-left">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase pill-badge mb-4">
-        <span class="w-2 h-2 rounded-full bg-[#C6613F] animate-pulse"></span>
-        Guia Prático & Aberto · 6 min de leitura
+  <!-- Top Archival Bar (Estilo Future Archive / Suíço) -->
+  <div class="border-b border-archive text-xs font-mono-code px-4 sm:px-8 py-3 flex justify-between items-center text-[#003049]/70 bg-[#FDF0D5]/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <span class="w-2 h-2 rounded-full bg-[#C1121F]"></span>
+      <span class="font-semibold tracking-wider text-[#003049]">[ ARCHIVE: 2026.10 ]</span>
+      <span class="hidden sm:inline text-[#669BBC]">·</span>
+      <span class="hidden sm:inline">SEGUNDO CÉREBRO MULTI-IA</span>
+    </div>
+    <div class="flex items-center gap-4 text-[11px]">
+      <a href="https://github.com/patrickzzanca/second-brain-multi-ai" target="_blank" class="hover:text-[#C1121F] transition-colors underline underline-offset-4">github ↗</a>
+      <span class="text-[#669BBC]">·</span>
+      <span>nitriviski.xyz</span>
+    </div>
+  </div>
+
+  <main class="max-w-[760px] mx-auto px-5 sm:px-8 py-12 sm:py-16">
+
+    <!-- Hero Central Clássico (Estilo Medium + The Workback) -->
+    <header class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono-code tracking-wider uppercase mb-5 border border-archive bg-white/60 text-[#003049]">
+        <span class="text-[#C1121F] font-bold">●</span> MANIFESTO & GUIA PRÁTICO · 6 MIN
       </div>
-      <h1 class="font-editorial text-4xl sm:text-5xl md:text-6xl font-normal leading-[1.15] text-[#1C1B1A] mb-6">
-        meu segundo cérebro com múltiplas ias.
+
+      <h1 class="font-editorial text-4xl sm:text-5xl md:text-6xl font-normal leading-[1.12] text-[#003049] mb-6 tracking-tight">
+        o seu segundo cérebro com múltiplas inteligências artificiais.
       </h1>
-      <p class="font-editorial text-xl sm:text-2xl text-[#52504D] italic leading-relaxed mb-6">
+
+      <p class="font-editorial text-xl sm:text-2xl text-[#003049]/80 italic max-w-[640px] mx-auto leading-relaxed mb-8">
         e se a IA já soubesse quem você é, o que está construindo e onde quer chegar — em qualquer ferramenta que você abrir?
       </p>
-      
-      <!-- Quick Info Bar (Estilo Luna) -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 border-y border-[#EBE7DF] text-xs text-[#6B6864]">
-        <div><strong class="text-[#1C1B1A] block">tempo:</strong> ~20 minutos</div>
-        <div><strong class="text-[#1C1B1A] block">custo:</strong> grátis (local)</div>
-        <div><strong class="text-[#1C1B1A] block">sistema:</strong> Mac, Windows, Linux</div>
-        <div><strong class="text-[#1C1B1A] block">ias:</strong> Claude, Gemini, Cursor</div>
+
+      <!-- Barra de Metadados em Grade Suíça (Ref 1 & Ref 3) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-4 border-y border-archive text-xs font-mono-code text-[#003049]/70 text-left bg-white/40 px-4 rounded-lg">
+        <div><span class="text-[#669BBC] block text-[10px] tracking-wider uppercase">TEMPO</span> ~15 minutos</div>
+        <div><span class="text-[#669BBC] block text-[10px] tracking-wider uppercase">CUSTO</span> 100% grátis (local)</div>
+        <div><span class="text-[#669BBC] block text-[10px] tracking-wider uppercase">PADRÃO</span> AGENTS.md</div>
+        <div><span class="text-[#669BBC] block text-[10px] tracking-wider uppercase">LOCK-IN</span> Zero (Multi-IA)</div>
       </div>
     </header>
 
-    <!-- Ilustração Conceitual (SVG Minimalista) -->
-    <div class="my-10 p-6 sm:p-8 bg-white rounded-2xl border border-[#EBE7DF] shadow-sm flex flex-col items-center text-center">
-      <svg class="w-full max-w-[420px] h-auto my-2" viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M200 90 L80 45" stroke="#EBE7DF" stroke-width="2" stroke-dasharray="4 4" />
-        <path d="M200 90 L320 45" stroke="#EBE7DF" stroke-width="2" stroke-dasharray="4 4" />
-        <path d="M200 90 L80 135" stroke="#EBE7DF" stroke-width="2" stroke-dasharray="4 4" />
-        <path d="M200 90 L320 135" stroke="#EBE7DF" stroke-width="2" stroke-dasharray="4 4" />
+    <!-- Ilustração Conceitual (Blueprint de Arquivo / Future Archive) -->
+    <section class="my-12 p-6 sm:p-8 bg-white/80 rounded-2xl border border-archive shadow-sm">
+      <div class="flex justify-between items-center text-[11px] font-mono-code text-[#669BBC] mb-4 pb-2 border-b border-archive">
+        <span>FIG. 01 — TOPOLOGIA DO SISTEMA</span>
+        <span>2 CAMADAS · LOCAL-FIRST</span>
+      </div>
+
+      <svg class="w-full max-w-[500px] h-auto mx-auto my-3" viewBox="0 0 460 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M230 100 L90 50" stroke="#669BBC" stroke-width="1.5" stroke-dasharray="3 3" />
+        <path d="M230 100 L370 50" stroke="#669BBC" stroke-width="1.5" stroke-dasharray="3 3" />
+        <path d="M230 100 L90 150" stroke="#669BBC" stroke-width="1.5" stroke-dasharray="3 3" />
+        <path d="M230 100 L370 150" stroke="#669BBC" stroke-width="1.5" stroke-dasharray="3 3" />
         
-        <circle cx="200" cy="90" r="32" fill="#F4EBE6" stroke="#C6613F" stroke-width="2" />
-        <text x="200" y="88" text-anchor="middle" font-family="'Newsreader', serif" font-size="13" font-weight="600" fill="#C6613F">VOCÊ</text>
-        <text x="200" y="101" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#6B6864">AGENTS.md</text>
+        <rect x="180" y="70" width="100" height="60" rx="10" fill="#003049" />
+        <text x="230" y="96" text-anchor="middle" font-family="'Newsreader', serif" font-size="14" font-weight="600" fill="#FDF0D5">VOCÊ</text>
+        <text x="230" y="114" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#669BBC">AGENTS.md</text>
 
-        <circle cx="80" cy="45" r="22" fill="#FFFFFF" stroke="#EBE7DF" stroke-width="2" />
-        <text x="80" y="49" text-anchor="middle" font-size="11" font-weight="500" fill="#1C1B1A">Carreira</text>
+        <rect x="40" y="30" width="100" height="40" rx="6" fill="#FFFFFF" stroke="#003049" stroke-width="1.5" />
+        <text x="90" y="54" text-anchor="middle" font-size="12" font-weight="600" fill="#003049">💼 Carreira</text>
 
-        <circle cx="320" cy="45" r="22" fill="#FFFFFF" stroke="#EBE7DF" stroke-width="2" />
-        <text x="320" y="49" text-anchor="middle" font-size="11" font-weight="500" fill="#1C1B1A">Estudos</text>
+        <rect x="320" y="30" width="100" height="40" rx="6" fill="#FFFFFF" stroke="#003049" stroke-width="1.5" />
+        <text x="370" y="54" text-anchor="middle" font-size="12" font-weight="600" fill="#003049">📚 Estudos</text>
 
-        <circle cx="80" cy="135" r="22" fill="#FFFFFF" stroke="#EBE7DF" stroke-width="2" />
-        <text x="80" y="139" text-anchor="middle" font-size="11" font-weight="500" fill="#1C1B1A">Projetos</text>
+        <rect x="40" y="130" width="100" height="40" rx="6" fill="#FFFFFF" stroke="#003049" stroke-width="1.5" />
+        <text x="90" y="154" text-anchor="middle" font-size="12" font-weight="600" fill="#003049">🚀 Projetos</text>
 
-        <circle cx="320" cy="135" r="22" fill="#FFFFFF" stroke="#EBE7DF" stroke-width="2" />
-        <text x="320" y="139" text-anchor="middle" font-size="11" font-weight="500" fill="#1C1B1A">Metas</text>
+        <rect x="320" y="130" width="100" height="40" rx="6" fill="#FFFFFF" stroke="#003049" stroke-width="1.5" />
+        <text x="370" y="154" text-anchor="middle" font-size="12" font-weight="600" fill="#003049">🎯 Metas</text>
+
+        <circle cx="230" cy="70" r="4" fill="#C1121F" />
       </svg>
-      <p class="text-xs text-[#8F8C86] font-editorial italic mt-2">
-        Uma única base de contexto local guiando todas as suas inteligências artificiais.
-      </p>
-    </div>
 
-    <!-- Introdução Calorosa (Estilo Medium) -->
-    <article class="space-y-6 text-[16px] text-[#33312E] leading-relaxed">
-      <p class="first-letter:font-editorial first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[#C6613F] first-letter:leading-none">
-        A maioria dos guias de produtividade com IA comete o mesmo erro: assume que você quer passar horas organizando pastas, criando prompts gigantes ou ficando refém de uma única assinatura mensal.
+      <p class="text-xs text-[#003049]/70 font-editorial italic text-center mt-3">
+        Uma única base de contexto em Markdown puro guiando Antigravity, Claude, Gemini ou Cursor sem atrito.
       </p>
-      <p>
-        Na vida real, quanto mais burocrático o sistema, mais rápido ele é abandonado. O que eu precisava era de algo <strong>leve, local e independente</strong>. Um lugar onde eu possa despejar anotações brutas sem julgamento, mas que permita à IA entender exatamente quem eu sou, minhas prioridades e minhas regras de negócio.
+    </section>
+
+    <!-- Artigo / Manifesto (Estilo Medium — Leitura Clara) -->
+    <article class="space-y-6 text-[17px] text-[#003049]/90 leading-relaxed font-normal">
+      <p class="first-letter:font-editorial first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:text-[#C1121F] first-letter:leading-none">
+        A maioria dos guias de produtividade com inteligência artificial comete o mesmo erro: assume que você quer passar horas organizando pastas perfeitas, criando prompts manuais gigantes a cada sessão ou ficando refém de uma única assinatura proprietária na nuvem.
       </p>
+      
       <p>
-        Construí esse sistema combinando o <strong>Obsidian</strong> (como leitor de arquivos locais em Markdown), o padrão aberto <strong>AGENTS.md</strong> (para falar com Claude, Gemini ou Antigravity) e uma <strong>arquitetura em duas camadas</strong>. Aqui está o passo a passo completo, mastigado, para você montar o seu.
+        Na prática, quanto mais burocrático e engessado o sistema, mais rápido ele é abandonado. O que realmente funciona no dia a dia de quem constrói produtos, estuda ou programa é algo <strong>leve, local e imune a lock-in</strong>. Um ambiente onde você possa despejar anotações brutas de reuniões sem julgamento, mas que permita à IA entender com precisão cirúrgica quem você é e quais são suas regras.
+      </p>
+
+      <p>
+        Construí essa arquitetura combinando três pilares: o <strong>Obsidian</strong> (como leitor de arquivos locais em Markdown), o padrão aberto <strong>AGENTS.md</strong> (compatível com Claude Code, Gemini CLI e Antigravity) e uma <strong>separação em duas camadas</strong> (estratégia vs. execução).
       </p>
     </article>
 
-    <!-- Seção de Benefícios (Cards Limpos) -->
-    <div class="my-12">
-      <div class="text-xs font-semibold tracking-wider uppercase text-[#C6613F] mb-2">O QUE MUDA NA PRÁTICA</div>
-      <h2 class="font-editorial text-3xl text-[#1C1B1A] mb-6">três alívios imediatos.</h2>
+    <!-- Pilares de Engenharia & Governança (Cards Estilo Future Archive / The Workback) -->
+    <section class="my-14">
+      <div class="flex items-center gap-2 text-xs font-mono-code text-[#C1121F] uppercase tracking-wider mb-2">
+        <span>//</span> OS PILARES DO SISTEMA
+      </div>
+      <h2 class="font-editorial text-3xl sm:text-4xl text-[#003049] mb-8">três alívios imediatos.</h2>
 
-      <div class="grid sm:grid-cols-3 gap-4">
-        <div class="p-5 bg-white rounded-xl border border-[#EBE7DF]">
-          <span class="text-lg mb-2 block">🧠</span>
-          <h3 class="font-semibold text-sm text-[#1C1B1A] mb-1">zero reexplicação</h3>
-          <p class="text-xs text-[#6B6864] leading-normal">
-            Você nunca mais começa uma conversa dizendo quem você é, onde trabalha ou o que está estudando. A IA já lê isso ao abrir a pasta.
-          </p>
+      <div class="grid sm:grid-cols-3 gap-5">
+        <div class="p-6 bg-white/90 rounded-xl border border-archive flex flex-col justify-between hover:border-[#669BBC] transition-colors">
+          <div>
+            <div class="font-mono-code text-[11px] text-[#669BBC] mb-3">SEC. 01 — MEMÓRIA</div>
+            <h3 class="font-editorial text-xl text-[#003049] mb-2 font-normal">zero reexplicação</h3>
+            <p class="text-xs text-[#003049]/70 leading-relaxed">
+              Você nunca mais começa uma conversa dizendo quem você é, onde trabalha ou o que está estudando. A IA já lê isso ao abrir a pasta.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-archive text-[10px] font-mono-code text-[#C1121F]">
+            AUTO-INGESTÃO
+          </div>
         </div>
 
-        <div class="p-5 bg-white rounded-xl border border-[#EBE7DF]">
-          <span class="text-lg mb-2 block">🛡️</span>
-          <h3 class="font-semibold text-sm text-[#1C1B1A] mb-1">livre de lock-in</h3>
-          <p class="text-xs text-[#6B6864] leading-normal">
-            Lançou um modelo novo do Gemini ou do Claude? O mesmo cofre e os mesmos comandos continuam funcionando sem mudar uma linha.
-          </p>
+        <div class="p-6 bg-white/90 rounded-xl border border-archive flex flex-col justify-between hover:border-[#669BBC] transition-colors">
+          <div>
+            <div class="font-mono-code text-[11px] text-[#669BBC] mb-3">SEC. 02 — SOBERANIA</div>
+            <h3 class="font-editorial text-xl text-[#003049] mb-2 font-normal">imune a lock-in</h3>
+            <p class="text-xs text-[#003049]/70 leading-relaxed">
+              Lançou um modelo novo do Gemini ou do Claude? O mesmo cofre e os mesmos comandos continuam funcionando sem alterar uma linha sequer.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-archive text-[10px] font-mono-code text-[#C1121F]">
+            PADRÃO AGENTS.MD
+          </div>
         </div>
 
-        <div class="p-5 bg-white rounded-xl border border-[#EBE7DF]">
-          <span class="text-lg mb-2 block">🎯</span>
-          <h3 class="font-semibold text-sm text-[#1C1B1A] mb-1">foco sem alucinação</h3>
-          <p class="text-xs text-[#6B6864] leading-normal">
-            Cada projeto vive na sua própria pasta isolada. A IA só lê o que importa para aquela entrega, sem misturar com sua vida inteira.
-          </p>
+        <div class="p-6 bg-white/90 rounded-xl border border-archive flex flex-col justify-between hover:border-[#669BBC] transition-colors">
+          <div>
+            <div class="font-mono-code text-[11px] text-[#669BBC] mb-3">SEC. 03 — PRECISÃO</div>
+            <h3 class="font-editorial text-xl text-[#003049] mb-2 font-normal">foco sem alucinação</h3>
+            <p class="text-xs text-[#003049]/70 leading-relaxed">
+              Cada projeto vive na sua própria pasta com escopo delimitado. A IA só lê o que importa para aquela entrega, poupando tokens e atenção.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-archive text-[10px] font-mono-code text-[#C1121F]">
+            DUAS CAMADAS
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- O Conceito Central: Duas Camadas -->
-    <div class="my-12 p-6 sm:p-8 bg-[#FBF9F5] rounded-2xl border border-[#EBE7DF]">
-      <div class="text-xs font-semibold tracking-wider uppercase text-[#C6613F] mb-1">A IDEIA QUE FAZ FUNCIONAR</div>
-      <h2 class="font-editorial text-3xl text-[#1C1B1A] mb-4">duas camadas simples.</h2>
+    <!-- O Conceito Central: As Duas Camadas -->
+    <section class="my-14 p-6 sm:p-8 bg-[#003049] text-[#FDF0D5] rounded-2xl border border-[#003049]">
+      <div class="text-xs font-mono-code tracking-wider uppercase text-[#669BBC] mb-2">// ARQUITETURA DE PENSAMENTO</div>
+      <h2 class="font-editorial text-3xl sm:text-4xl text-[#FDF0D5] mb-6 font-normal">duas camadas simples.</h2>
       
-      <div class="space-y-4 text-sm text-[#4A4744]">
-        <div class="flex gap-4 items-start">
-          <div class="w-7 h-7 rounded-full bg-[#C6613F] text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
+      <div class="space-y-6 text-sm text-[#FDF0D5]/80">
+        <div class="flex gap-4 items-start pb-5 border-b border-white/10">
+          <div class="w-8 h-8 rounded-full bg-[#C1121F] text-[#FDF0D5] flex items-center justify-center font-mono-code font-bold text-xs shrink-0 mt-0.5">01</div>
           <div>
-            <strong class="text-[#1C1B1A] block text-base font-editorial">Camada 1: Sua Vida (Estratégia)</strong>
-            Na raiz do cofre: seu perfil, seus princípios, metas de 6 a 12 meses e sua visão ampla. Aqui a IA pensa com você, aponta excessos e ajuda a tomar decisões de longo prazo.
+            <strong class="text-white block text-lg font-editorial font-normal mb-1">Camada 1: Sua Vida (Estratégia)</strong>
+            <p class="text-xs sm:text-sm text-[#FDF0D5]/70 leading-relaxed">
+              Na raiz do cofre: seu perfil, seus princípios, metas de 6 a 12 meses e sua visão ampla. Aqui a IA pensa com você, aponta excessos e ajuda a tomar decisões de longo prazo.
+            </p>
           </div>
         </div>
 
         <div class="flex gap-4 items-start">
-          <div class="w-7 h-7 rounded-full bg-[#1C1B1A] text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
+          <div class="w-8 h-8 rounded-full bg-[#669BBC] text-[#003049] flex items-center justify-center font-mono-code font-bold text-xs shrink-0 mt-0.5">02</div>
           <div>
-            <strong class="text-[#1C1B1A] block text-base font-editorial">Camada 2: Seus Projetos (Execução)</strong>
-            Uma pasta por iniciativa. Aqui a IA não filosofa: ela tem um checklist estrito, um critério de entrega claro (DoD) e foco cirúrgico até terminar.
+            <strong class="text-white block text-lg font-editorial font-normal mb-1">Camada 2: Seus Projetos (Execução)</strong>
+            <p class="text-xs sm:text-sm text-[#FDF0D5]/70 leading-relaxed">
+              Uma pasta por iniciativa. Aqui a IA não filosofa: ela tem um checklist estrito, um critério de entrega claro (*Definition of Done*) e foco cirúrgico até terminar.
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Passo a Passo Interativo (Estilo Luna + Medium) -->
-    <div class="my-14 space-y-12">
+    <!-- Passo a Passo (Numeração com Estilo Chantal Akerman / Suíço) -->
+    <section class="my-16 space-y-12">
       <div>
-        <div class="text-xs font-semibold tracking-wider uppercase text-[#C6613F] mb-1">PASSO A PASSO</div>
-        <h2 class="font-editorial text-3xl sm:text-4xl text-[#1C1B1A]">do zero ao seu cérebro ativo.</h2>
+        <div class="text-xs font-mono-code text-[#C1121F] uppercase tracking-wider mb-2">// PASSO A PASSO</div>
+        <h2 class="font-editorial text-3xl sm:text-4xl text-[#003049]">do zero ao seu cérebro ativo.</h2>
       </div>
 
       <!-- Passo 1 -->
-      <div class="relative pl-8 sm:pl-10 border-l-2 border-[#EBE7DF] space-y-3">
-        <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-white border-2 border-[#C6613F] text-[#C6613F] font-semibold text-xs flex items-center justify-center">01</span>
-        <h3 class="font-editorial text-2xl text-[#1C1B1A]">baixe o template aberto</h3>
-        <p class="text-sm text-[#595652]">
-          Montei uma estrutura limpa e pronta em Markdown, sem dados pessoais, para você abrir direto como um cofre no Obsidian.
+      <div class="relative pl-8 sm:pl-10 border-l-2 border-[#003049]/20 space-y-3">
+        <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-[#FDF0D5] border-2 border-[#C1121F] text-[#C1121F] font-mono-code font-bold text-xs flex items-center justify-center">01</span>
+        <h3 class="font-editorial text-2xl text-[#003049] font-normal">baixe o template aberto</h3>
+        <p class="text-sm text-[#003049]/80">
+          Montei uma estrutura limpa e pronta em Markdown, 100% sanitizada (sem dados pessoais), para você abrir direto como um cofre no Obsidian.
         </p>
         <div class="pt-2">
-          <a href="https://github.com/patrickzzanca/second-brain-multi-ai" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#1C1B1A] text-white text-xs font-semibold hover:bg-[#33312E] transition-colors">
-            <span>Baixar Template no GitHub</span>
+          <a href="https://github.com/patrickzzanca/second-brain-multi-ai" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#C1121F] text-white text-xs font-mono-code font-semibold hover:bg-[#780000] transition-colors shadow-sm">
+            <span>Acessar Repositório no GitHub</span>
             <span>→</span>
           </a>
-          <span class="text-xs text-[#8F8C86] block mt-1.5 font-editorial italic">grátis · formato aberto · sem cadastro</span>
+          <span class="text-xs text-[#003049]/60 block mt-2 font-editorial italic">grátis · formato aberto · licença MIT</span>
         </div>
       </div>
 
       <!-- Passo 2 -->
-      <div class="relative pl-8 sm:pl-10 border-l-2 border-[#EBE7DF] space-y-3">
-        <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-white border-2 border-[#C6613F] text-[#C6613F] font-semibold text-xs flex items-center justify-center">02</span>
-        <h3 class="font-editorial text-2xl text-[#1C1B1A]">deixe a ia te entrevistar</h3>
-        <p class="text-sm text-[#595652]">
-          Abra o terminal do seu assistente (Claude Code, Antigravity ou seu leitor preferido) e rode o comando abaixo. A IA fará 4 perguntas sobre você, suas metas e como prefere receber feedback.
+      <div class="relative pl-8 sm:pl-10 border-l-2 border-[#003049]/20 space-y-3">
+        <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-[#FDF0D5] border-2 border-[#C1121F] text-[#C1121F] font-mono-code font-bold text-xs flex items-center justify-center">02</span>
+        <h3 class="font-editorial text-2xl text-[#003049] font-normal">deixe a ia te entrevistar</h3>
+        <p class="text-sm text-[#003049]/80">
+          Abra o terminal do seu assistente (Claude Code, Antigravity ou seu agente preferido) e rode o comando abaixo. A IA fará 4 perguntas sobre você, suas metas e como prefere receber feedback.
         </p>
         
-        <!-- Code Copy Box -->
-        <div class="bg-[#1C1B1A] text-[#F5F2EB] rounded-xl p-3 sm:p-4 flex items-center justify-between font-mono-code text-xs sm:text-sm">
+        <div class="bg-[#003049] text-[#FDF0D5] rounded-xl p-3.5 sm:p-4 flex items-center justify-between font-mono-code text-xs sm:text-sm shadow-sm border border-white/10">
           <span>/configurar-cerebro</span>
-          <button onclick="copyCommand('/configurar-cerebro', this)" class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded text-xs transition-colors font-sans">
+          <button onclick="copyCommand('/configurar-cerebro', this)" class="px-3 py-1 bg-[#669BBC]/30 hover:bg-[#669BBC]/50 text-[#FDF0D5] rounded text-xs transition-colors font-mono-code">
             copiar
           </button>
         </div>
-        <p class="text-xs text-[#8F8C86] font-editorial italic">
-          💡 Dica: responda falando pelo ditado de voz do teclado. Quanto mais sincero você for sobre onde você costuma se sabotar, melhor o cérebro te apoiará.
+        <p class="text-xs text-[#003049]/60 font-editorial italic">
+          💡 Dica: responda falando pelo ditado de voz do teclado. Quanto mais sincero você for sobre onde costuma se sabotar, melhor o cérebro te apoiará.
         </p>
       </div>
 
       <!-- Passo 3 -->
-      <div class="relative pl-8 sm:pl-10 border-l-2 border-[#EBE7DF] space-y-3">
-        <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-white border-2 border-[#C6613F] text-[#C6613F] font-semibold text-xs flex items-center justify-center">03</span>
-        <h3 class="font-editorial text-2xl text-[#1C1B1A]">crie seu primeiro projeto focado</h3>
-        <p class="text-sm text-[#595652]">
+      <div class="relative pl-8 sm:pl-10 border-l-2 border-[#003049]/20 space-y-3">
+        <span class="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-[#FDF0D5] border-2 border-[#C1121F] text-[#C1121F] font-mono-code font-bold text-xs flex items-center justify-center">03</span>
+        <h3 class="font-editorial text-2xl text-[#003049] font-normal">crie seu primeiro projeto focado</h3>
+        <p class="text-sm text-[#003049]/80">
           Para cada iniciativa com começo, meio e fim (um curso, um app, um cliente ou um estudo de caso), use o scaffold automático:
         </p>
 
-        <div class="bg-[#1C1B1A] text-[#F5F2EB] rounded-xl p-3 sm:p-4 flex items-center justify-between font-mono-code text-xs sm:text-sm">
+        <div class="bg-[#003049] text-[#FDF0D5] rounded-xl p-3.5 sm:p-4 flex items-center justify-between font-mono-code text-xs sm:text-sm shadow-sm border border-white/10">
           <span>/novo-projeto [nome do projeto]</span>
-          <button onclick="copyCommand('/novo-projeto [nome do projeto]', this)" class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded text-xs transition-colors font-sans">
+          <button onclick="copyCommand('/novo-projeto [nome do projeto]', this)" class="px-3 py-1 bg-[#669BBC]/30 hover:bg-[#669BBC]/50 text-[#FDF0D5] rounded text-xs transition-colors font-mono-code">
             copiar
           </button>
         </div>
-        <p class="text-sm text-[#595652]">
-          A IA criará a pasta, a Visão Geral com checklist e o arquivo <code class="font-mono-code text-xs bg-[#EBE7DF] px-1 py-0.5 rounded">AGENTS.md</code> local. Você trabalha focado apenas ali até a entrega.
+        <p class="text-sm text-[#003049]/80">
+          A IA criará a pasta, a Visão Geral com checklist e o arquivo <code class="font-mono-code text-xs bg-white/70 px-1.5 py-0.5 rounded border border-archive">AGENTS.md</code> local. Você trabalha focado apenas ali até a entrega.
         </p>
       </div>
-    </div>
+    </section>
 
-    <!-- Seção de Apoio / Dúvidas Rápidas -->
-    <div class="my-14 pt-8 border-t border-[#EBE7DF]">
-      <div class="text-xs font-semibold tracking-wider uppercase text-[#C6613F] mb-1">DÚVIDAS FREQUENTES</div>
-      <h2 class="font-editorial text-2xl sm:text-3xl text-[#1C1B1A] mb-6">o que você precisa saber.</h2>
+    <!-- Dúvidas Frequentes (Accordion Minimalista) -->
+    <section class="my-16 pt-8 border-t border-archive">
+      <div class="text-xs font-mono-code text-[#C1121F] uppercase tracking-wider mb-2">// FAQ</div>
+      <h2 class="font-editorial text-2xl sm:text-3xl text-[#003049] mb-6 font-normal">o que você precisa saber.</h2>
 
       <div class="space-y-3">
-        <details class="bg-white border border-[#EBE7DF] rounded-xl p-4 text-sm group cursor-pointer">
-          <summary class="font-semibold text-[#1C1B1A] flex justify-between items-center list-none">
+        <details class="bg-white/80 border border-archive rounded-xl p-4 text-sm group cursor-pointer">
+          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-lg">
             <span>Preciso de um computador potente para rodar?</span>
-            <span class="text-xs text-[#8F8C86] group-open:rotate-180 transition-transform">▼</span>
+            <span class="text-xs text-[#669BBC] group-open:rotate-180 transition-transform">▼</span>
           </summary>
-          <p class="text-[#6B6864] text-xs sm:text-sm mt-3 pt-3 border-t border-[#F0ECE1]">
-            Não. Os arquivos são textos leves em Markdown (.md). Eles rodam perfeitamente em qualquer notebook antigo ou desktop simples.
+          <p class="text-[#003049]/70 text-xs sm:text-sm mt-3 pt-3 border-t border-archive leading-relaxed">
+            Não. Os arquivos são textos leves em Markdown (.md). Eles rodam perfeitamente em qualquer notebook antigo ou desktop simples sem esquentar a máquina.
           </p>
         </details>
 
-        <details class="bg-white border border-[#EBE7DF] rounded-xl p-4 text-sm group cursor-pointer">
-          <summary class="font-semibold text-[#1C1B1A] flex justify-between items-center list-none">
-            <span>Meus dados ficam seguros?</span>
-            <span class="text-xs text-[#8F8C86] group-open:rotate-180 transition-transform">▼</span>
+        <details class="bg-white/80 border border-archive rounded-xl p-4 text-sm group cursor-pointer">
+          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-lg">
+            <span>Meus dados ficam seguros e privados?</span>
+            <span class="text-xs text-[#669BBC] group-open:rotate-180 transition-transform">▼</span>
           </summary>
-          <p class="text-[#6B6864] text-xs sm:text-sm mt-3 pt-3 border-t border-[#F0ECE1]">
-            Sim. O cofre vive 100% no seu disco rígido local, sob controle de versão do seu próprio Git. Nenhuma nota sua é enviada para servidores terceiros sem você acionar o assistente explicitamente.
+          <p class="text-[#003049]/70 text-xs sm:text-sm mt-3 pt-3 border-t border-archive leading-relaxed">
+            Sim. O cofre vive 100% no seu disco rígido local, sob controle de versão do seu próprio Git. Nenhuma nota sua é enviada para nuvens fechadas sem seu comando explícito.
           </p>
         </details>
 
-        <details class="bg-white border border-[#EBE7DF] rounded-xl p-4 text-sm group cursor-pointer">
-          <summary class="font-semibold text-[#1C1B1A] flex justify-between items-center list-none">
+        <details class="bg-white/80 border border-archive rounded-xl p-4 text-sm group cursor-pointer">
+          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-lg">
             <span>Por que não usar apenas o Notion?</span>
-            <span class="text-xs text-[#8F8C86] group-open:rotate-180 transition-transform">▼</span>
+            <span class="text-xs text-[#669BBC] group-open:rotate-180 transition-transform">▼</span>
           </summary>
-          <p class="text-[#6B6864] text-xs sm:text-sm mt-3 pt-3 border-t border-[#F0ECE1]">
-            O Notion é um banco de dados fechado na nuvem. Agentes de IA locais têm atrito para ler e escrever nele em alta velocidade. Arquivos planos em Markdown no seu drive são lidos instantaneamente e nunca te deixam na mão.
+          <p class="text-[#003049]/70 text-xs sm:text-sm mt-3 pt-3 border-t border-archive leading-relaxed">
+            O Notion é um banco de dados proprietário na nuvem. Agentes de IA locais têm enorme atrito de latência e permissão para ler e escrever nele em alta velocidade. Arquivos planos em Markdown no seu disco são lidos instantaneamente em milissegundos.
           </p>
         </details>
       </div>
-    </div>
+    </section>
 
-    <!-- Footer Elegante & Acolhedor -->
-    <footer class="mt-16 pt-8 border-t border-[#EBE7DF] text-center text-xs text-[#8F8C86] space-y-2">
-      <p class="font-editorial text-base text-[#1C1B1A]">
+    <!-- Rodapé de Arquivo / Galeria -->
+    <footer class="mt-20 pt-8 border-t border-archive text-center text-xs font-mono-code text-[#003049]/60 space-y-2">
+      <p class="font-editorial text-base text-[#003049]">
         construído para simplificar e dar clareza.
       </p>
       <p>
-        baseado no padrão aberto <span class="font-mono-code">AGENTS.md</span> · local-first · livre para uso
+        baseado no padrão aberto <span class="font-bold text-[#003049]">AGENTS.md</span> · local-first · sob licença MIT
+      </p>
+      <p class="text-[11px] text-[#669BBC] pt-2">
+        segundocerebro.nitriviski.xyz · 2026
       </p>
     </footer>
 
-  </div>
+  </main>
 
   <script>
     function copyCommand(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
         const originalText = btn.innerText;
         btn.innerText = 'copiado! ✓';
-        btn.classList.add('bg-emerald-600', 'text-white');
+        btn.classList.add('bg-[#C1121F]', 'text-white');
         setTimeout(() => {
           btn.innerText = originalText;
-          btn.classList.remove('bg-emerald-600', 'text-white');
+          btn.classList.remove('bg-[#C1121F]', 'text-white');
         }, 2000);
       });
     }
