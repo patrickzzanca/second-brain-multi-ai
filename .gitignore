@@ -1,0 +1,6 @@
+# Tooling & Inspection artifacts
+.taste-skill/
+.wrangler/
+node_modules/
+.DS_Store
+Thumbs.db

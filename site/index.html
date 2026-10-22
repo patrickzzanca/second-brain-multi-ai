@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="meta-title">Segundo Cérebro Multi-IA — Guia Prático</title>
+  <title id="meta-title">Segundo Cérebro Multi-IA — Guia Prático e Manifesto</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
     
     :root {
       --bg-cream: #FDF0D5;
       --navy-deep: #003049;
+      --surface-warm: #F4E2BD;
+      --surface-card: #F7E9CE;
       --blue-slate: #669BBC;
       --red-vibrant: #C1121F;
-      --red-dark: #780000;
     }
 
     body {
       background-color: var(--bg-cream);
       color: var(--navy-deep);
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      line-height: 1.8;
+      line-height: 1.7;
+      font-size: 16px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -32,370 +34,512 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Suavidade nas trocas de idioma */
-    .i18n-trans {
-      transition: opacity 0.15s ease-in-out;
+    .motion-item {
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, .motion-item {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
     }
   </style>
 </head>
-<body class="min-h-screen text-[#003049]">
+<body class="min-h-screen text-[#003049] bg-[#FDF0D5]">
 
-  <!-- Topo Minimalista com Toggle de Idioma e Redes -->
-  <header class="border-b border-[#003049]/10 text-xs font-mono-code px-4 sm:px-8 py-3.5 flex justify-between items-center text-[#003049]/70 bg-[#FDF0D5]/90 backdrop-blur-sm sticky top-0 z-50">
-    <div class="flex items-center gap-2.5">
-      <span class="w-1.5 h-1.5 rounded-full bg-[#C1121F]"></span>
-      <span id="nav-brand" class="tracking-wider text-[#003049] font-medium text-[11px] sm:text-xs">segundo cérebro multi-ia</span>
-    </div>
-
-    <div class="flex items-center gap-3 sm:gap-5 text-[11px]">
-      <a href="https://github.com/patrickzzanca/second-brain-multi-ai" target="_blank" class="hover:text-[#C1121F] transition-colors underline underline-offset-4">github ↗</a>
-      <a href="https://www.linkedin.com/in/patrickzanca/" target="_blank" class="hover:text-[#C1121F] transition-colors underline underline-offset-4">linkedin ↗</a>
-      
-      <!-- Seletor de Idioma PT / EN -->
-      <div class="flex items-center font-mono-code text-[10px] bg-[#003049]/5 p-0.5 rounded border border-[#003049]/15 ml-1">
-        <button id="btn-pt" onclick="setLanguage('pt')" class="px-1.5 py-0.5 rounded bg-[#003049] text-[#FDF0D5] font-semibold transition-all">PT</button>
-        <button id="btn-en" onclick="setLanguage('en')" class="px-1.5 py-0.5 rounded text-[#003049]/60 hover:text-[#003049] transition-all">EN</button>
+  <!-- Topo Editorial com Margem Equilibrada -->
+  <header class="sticky top-0 z-50 bg-[#FDF0D5]/95 backdrop-blur-md">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8 py-4 flex justify-between items-center text-base">
+      <div class="flex items-center gap-3">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C1121F] opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#C1121F]"></span>
+        </span>
+        <span id="nav-brand" class="font-semibold text-base tracking-tight text-[#003049]">segundo cérebro multi-ia</span>
       </div>
+
+      <nav class="flex items-center gap-2.5 sm:gap-4 text-base font-medium">
+        <!-- Link GitHub com Ícone SVG -->
+        <a href="https://github.com/patrickzzanca/second-brain-multi-ai" target="_blank" rel="noopener" aria-label="GitHub" class="p-2 text-[#003049] hover:text-[#C1121F] hover:bg-[#003049]/5 rounded-lg transition-colors inline-flex items-center gap-1.5">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span class="hidden sm:inline text-sm font-medium">github</span>
+        </a>
+
+        <!-- Link LinkedIn com Ícone SVG -->
+        <a href="https://www.linkedin.com/in/patrickzanca/" target="_blank" rel="noopener" aria-label="LinkedIn" class="p-2 text-[#003049] hover:text-[#C1121F] hover:bg-[#003049]/5 rounded-lg transition-colors inline-flex items-center gap-1.5">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/>
+          </svg>
+          <span class="hidden sm:inline text-sm font-medium">linkedin</span>
+        </a>
+        
+        <!-- Seletor de Idioma PT / EN -->
+        <div class="flex items-center bg-[#003049]/10 p-1 rounded-md text-sm font-semibold ml-1">
+          <button id="btn-pt" onclick="setLanguage('pt')" class="px-2.5 py-1 rounded bg-[#003049] text-[#FDF0D5] transition-all">PT</button>
+          <button id="btn-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded text-[#003049]/70 hover:text-[#003049] transition-all">EN</button>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <main class="max-w-[720px] mx-auto px-5 sm:px-8 py-12 sm:py-20">
+  <main class="max-w-4xl mx-auto px-5 sm:px-8 py-10 sm:py-16 space-y-20 sm:space-y-28 overflow-hidden">
 
-    <!-- Hero Editorial (Estilo Luna Machado + Medium) -->
-    <section class="text-center mb-14 sm:mb-16">
-      <span id="hero-badge" class="inline-block text-[11px] font-mono-code tracking-widest uppercase text-[#C1121F] mb-3">
-        guia prático & manifesto
-      </span>
-
-      <h1 id="hero-title" class="font-editorial text-3xl sm:text-5xl md:text-6xl font-normal leading-[1.14] text-[#003049] mb-5 tracking-tight">
-        o seu segundo cérebro com múltiplas inteligências artificiais.
+    <!-- Hero Editorial (Focal Point Forte, Headline em 2 Linhas, CTA no Fold) -->
+    <section class="text-center pt-4 sm:pt-8 motion-item">
+      <h1 id="hero-title" class="font-editorial text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-normal leading-[1.08] text-[#003049] mb-6 tracking-tight max-w-3xl mx-auto">
+        <span class="block">o seu segundo cérebro</span>
+        <span class="block">com múltiplas IAs.</span>
       </h1>
 
-      <p id="hero-subtitle" class="font-editorial text-lg sm:text-2xl text-[#003049]/80 italic max-w-[580px] mx-auto leading-relaxed mb-6 sm:mb-8">
-        e se a IA já soubesse quem você é, o que está construindo e onde quer chegar — em qualquer ferramenta que você abrir?
+      <p id="hero-subtitle" class="font-editorial text-lg sm:text-2xl text-[#003049]/85 italic max-w-[55ch] mx-auto leading-relaxed mb-8 motion-item">
+        e se qualquer IA que você abrir já soubesse quem você é, o que está construindo e onde quer chegar?
       </p>
 
-      <!-- Metadados Limpos e Flutuantes -->
-      <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-6 text-xs font-mono-code text-[#003049]/60">
-        <div><span id="meta-time-lbl" class="text-[#669BBC] text-[10px] uppercase tracking-wider mr-1.5">tempo</span><span id="meta-time-val">~15 min</span></div>
-        <span class="text-[#003049]/20">/</span>
-        <div><span id="meta-std-lbl" class="text-[#669BBC] text-[10px] uppercase tracking-wider mr-1.5">padrão</span>AGENTS.md</div>
-        <span class="text-[#003049]/20">/</span>
-        <div><span id="meta-sov-lbl" class="text-[#669BBC] text-[10px] uppercase tracking-wider mr-1.5">soberania</span><span id="meta-sov-val">zero lock-in</span></div>
+      <!-- Botão de Ação Primário na Dobra -->
+      <div class="flex flex-wrap justify-center items-center gap-4 mb-8 motion-item">
+        <a id="hero-cta" href="https://github.com/patrickzzanca/second-brain-multi-ai" target="_blank" rel="noopener" class="px-6 py-3.5 bg-[#003049] hover:bg-[#C1121F] text-[#FDF0D5] font-semibold text-base rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-none inline-flex items-center gap-2">
+          <span id="hero-cta-txt">Acessar Template no GitHub</span>
+          <span>→</span>
+        </a>
+        <a id="hero-secondary" href="#manifesto" class="px-5 py-3.5 text-[#003049] hover:text-[#C1121F] font-medium text-base transition-colors inline-flex items-center gap-1.5">
+          <span id="hero-sec-txt">Ler o manifesto</span>
+          <span>↓</span>
+        </a>
+      </div>
+
+      <!-- Metadados Limpos e Legíveis -->
+      <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-base text-[#003049]/80 pt-2 motion-item">
+        <div class="flex items-center gap-1.5">
+          <span id="meta-time-lbl" class="font-semibold text-[#003049]">Tempo de setup:</span>
+          <span id="meta-time-val">~15 minutos</span>
+        </div>
+        <span class="text-[#003049]/30">·</span>
+        <div class="flex items-center gap-1.5">
+          <span id="meta-std-lbl" class="font-semibold text-[#003049]">Padrão aberto:</span>
+          <span>AGENTS.md</span>
+        </div>
+        <span class="text-[#003049]/30">·</span>
+        <div class="flex items-center gap-1.5">
+          <span id="meta-sov-lbl" class="font-semibold text-[#003049]">Soberania:</span>
+          <span id="meta-sov-val">zero lock-in</span>
+        </div>
       </div>
     </section>
 
-    <!-- FIG. 01: Topologia Orgânica do Sistema (ViewBox amplo 760x360 com mais altura e respiro) -->
-    <section class="my-14 sm:my-18 py-2">
-      <div class="flex justify-between items-center text-[11px] font-mono-code text-[#669BBC] mb-6 pb-2 border-b border-[#003049]/10">
-        <span id="fig1-header-title">fig. 01 — topologia do sistema</span>
-        <span>local-first</span>
+    <!-- Topologia do Sistema com Fragmento Real de Interface -->
+    <section class="motion-item space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pb-3">
+        <div>
+          <h2 id="fig1-title" class="font-editorial text-2xl sm:text-4xl text-[#003049] font-normal">Como o sistema se conecta</h2>
+          <p id="fig1-sub" class="text-base text-[#003049]/75 mt-1 max-w-[55ch]">Rede viva em arquivos locais onde o contexto parte de você e ramifica para os projetos.</p>
+        </div>
+        <span class="text-base font-semibold text-[#003049]">Local-first</span>
       </div>
 
-      <div class="w-full">
-        <!-- viewBox 0 0 760 360: Altura ampla, curvas generosas e legíveis -->
-        <svg class="w-full max-w-[720px] h-auto mx-auto my-4 block" viewBox="0 0 760 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Curvas Orgânicas de Conexão -->
-          <!-- Ramo Superior Esquerdo: Carreira -->
-          <path d="M380 180 C290 145, 230 110, 190 95" stroke="#003049" stroke-width="1.2" stroke-opacity="0.3" />
-          <path d="M190 95 C145 90, 115 82, 90 75" stroke="#003049" stroke-width="0.9" stroke-dasharray="2 2" stroke-opacity="0.22" />
+      <!-- Grid com Diagrama Orgânico + Fragmento Real de Interface (Obsidian Vault Explorer) -->
+      <div class="grid md:grid-cols-12 gap-6 items-stretch">
+        <!-- SVG Orgânico com Textos Dentro das Formas e Escala Proporcional -->
+        <div class="md:col-span-7 bg-[#F7E9CE] p-4 sm:p-6 rounded-2xl flex flex-col justify-center motion-item">
+          <svg class="w-full h-auto mx-auto block" viewBox="0 0 740 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Curvas de Conexão Orgânicas -->
+            <!-- Ramo Superior Esquerdo (Carreira) -->
+            <path d="M 305 168 C 240 142, 210 115, 190 98" stroke="#003049" stroke-width="1.8" stroke-opacity="0.35" />
+            <path d="M 120 86 L 104 86" stroke="#003049" stroke-width="1.4" stroke-dasharray="3 3" stroke-opacity="0.3" />
 
-          <!-- Ramo Superior Direito: Estudos -->
-          <path d="M380 180 C470 145, 530 110, 570 95" stroke="#003049" stroke-width="1.2" stroke-opacity="0.3" />
-          <path d="M570 95 C615 90, 645 82, 670 75" stroke="#003049" stroke-width="0.9" stroke-dasharray="2 2" stroke-opacity="0.22" />
+            <!-- Ramo Superior Direito (Estudos) -->
+            <path d="M 435 168 C 500 142, 530 115, 550 98" stroke="#003049" stroke-width="1.8" stroke-opacity="0.35" />
+            <path d="M 620 86 L 636 86" stroke="#003049" stroke-width="1.4" stroke-dasharray="3 3" stroke-opacity="0.3" />
 
-          <!-- Ramo Inferior Esquerdo: Projetos -->
-          <path d="M380 180 C280 215, 220 248, 180 265" stroke="#003049" stroke-width="1.2" stroke-opacity="0.3" />
-          <path d="M180 265 C135 272, 105 282, 80 290" stroke="#003049" stroke-width="0.9" stroke-dasharray="2 2" stroke-opacity="0.22" />
+            <!-- Ramo Inferior Esquerdo (Projetos) -->
+            <path d="M 305 202 C 240 228, 210 255, 190 272" stroke="#003049" stroke-width="1.8" stroke-opacity="0.35" />
+            <path d="M 120 281 L 104 281" stroke="#003049" stroke-width="1.4" stroke-dasharray="3 3" stroke-opacity="0.3" />
 
-          <!-- Ramo Inferior Direito: Metas -->
-          <path d="M380 180 C480 215, 540 248, 580 265" stroke="#003049" stroke-width="1.2" stroke-opacity="0.3" />
-          <path d="M580 265 C625 272, 655 282, 680 290" stroke="#003049" stroke-width="0.9" stroke-dasharray="2 2" stroke-opacity="0.22" />
+            <!-- Ramo Inferior Direito (Metas) -->
+            <path d="M 435 202 C 500 228, 530 255, 550 272" stroke="#003049" stroke-width="1.8" stroke-opacity="0.35" />
+            <path d="M 620 281 L 636 281" stroke="#003049" stroke-width="1.4" stroke-dasharray="3 3" stroke-opacity="0.3" />
 
-          <!-- Ramo Inferior Central: Inbox -->
-          <path d="M380 180 C380 230, 380 275, 380 305" stroke="#003049" stroke-width="1" stroke-dasharray="3 3" stroke-opacity="0.25" />
+            <!-- Ramo Inferior Central (Inbox) -->
+            <path d="M 370 220 L 370 316" stroke="#003049" stroke-width="1.5" stroke-dasharray="3 3" stroke-opacity="0.35" />
 
-          <!-- Nós e Rótulos -->
-          <!-- Carreira -->
-          <circle cx="190" cy="95" r="7" stroke="#003049" stroke-width="2.2" fill="#FDF0D5" />
-          <circle cx="90" cy="75" r="4" fill="#003049" fill-opacity="0.4" />
-          <text id="node-career" x="190" y="75" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#003049">carreira</text>
-          <text id="node-decisions" x="78" y="79" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="11" fill="#003049" fill-opacity="0.6">decisões</text>
+            <!-- 1. Carreira (Forma com Texto Dentro) -->
+            <rect x="120" y="65" width="130" height="42" rx="21" fill="#FDF0D5" stroke="#003049" stroke-width="2" />
+            <text id="node-career" x="185" y="91" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#003049">carreira</text>
 
-          <!-- Estudos -->
-          <circle cx="570" cy="95" r="7" stroke="#003049" stroke-width="2.2" fill="#FDF0D5" />
-          <circle cx="670" cy="75" r="4" fill="#003049" fill-opacity="0.4" />
-          <text id="node-studies" x="570" y="75" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#003049">estudos</text>
-          <text id="node-readings" x="682" y="79" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="11" fill="#003049" fill-opacity="0.6">leituras</text>
+            <!-- 1b. Decisões (Sub-cápsula com Texto Dentro) -->
+            <rect x="18" y="71" width="86" height="30" rx="15" fill="#003049" fill-opacity="0.08" stroke="#003049" stroke-opacity="0.25" stroke-width="1.2" />
+            <text id="node-decisions" x="61" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="500" fill="#003049">decisões</text>
 
-          <!-- Projetos -->
-          <circle cx="180" cy="265" r="7" stroke="#003049" stroke-width="2.2" fill="#FDF0D5" />
-          <circle cx="80" cy="290" r="4" fill="#003049" fill-opacity="0.4" />
-          <text id="node-projects" x="180" y="295" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#003049">projetos</text>
-          <text id="node-execution" x="68" y="294" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="11" fill="#003049" fill-opacity="0.6">execução</text>
+            <!-- 2. Estudos (Forma com Texto Dentro) -->
+            <rect x="490" y="65" width="130" height="42" rx="21" fill="#FDF0D5" stroke="#003049" stroke-width="2" />
+            <text id="node-studies" x="555" y="91" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#003049">estudos</text>
 
-          <!-- Metas -->
-          <circle cx="580" cy="265" r="7" stroke="#003049" stroke-width="2.2" fill="#FDF0D5" />
-          <circle cx="680" cy="290" r="4" fill="#003049" fill-opacity="0.4" />
-          <text id="node-goals" x="580" y="295" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#003049">metas</text>
-          <text id="node-principles" x="692" y="294" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="11" fill="#003049" fill-opacity="0.6">princípios</text>
+            <!-- 2b. Leituras (Sub-cápsula com Texto Dentro) -->
+            <rect x="636" y="71" width="86" height="30" rx="15" fill="#003049" fill-opacity="0.08" stroke="#003049" stroke-opacity="0.25" stroke-width="1.2" />
+            <text id="node-readings" x="679" y="90" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="500" fill="#003049">leituras</text>
 
-          <!-- Inbox -->
-          <circle cx="380" cy="305" r="5" fill="#003049" fill-opacity="0.5" />
-          <text id="node-inbox" x="380" y="332" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="13.5" font-style="italic" fill="#003049">inbox & anotações</text>
+            <!-- 3. Projetos (Forma com Texto Dentro) -->
+            <rect x="120" y="260" width="130" height="42" rx="21" fill="#FDF0D5" stroke="#003049" stroke-width="2" />
+            <text id="node-projects" x="185" y="286" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#003049">projetos</text>
 
-          <!-- Nó Central Principal: você & AGENTS.md -->
-          <circle cx="380" cy="180" r="42" stroke="#003049" stroke-width="1.2" stroke-opacity="0.15" stroke-dasharray="3 3" />
-          <circle cx="380" cy="180" r="30" fill="#003049" />
-          <text id="node-center-you" x="380" y="177" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="16" font-style="italic" font-weight="500" fill="#FDF0D5">você</text>
-          <text x="380" y="192" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#669BBC">AGENTS.md</text>
-        </svg>
+            <!-- 3b. Execução (Sub-cápsula com Texto Dentro) -->
+            <rect x="18" y="266" width="86" height="30" rx="15" fill="#003049" fill-opacity="0.08" stroke="#003049" stroke-opacity="0.25" stroke-width="1.2" />
+            <text id="node-execution" x="61" y="285" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="500" fill="#003049">execução</text>
+
+            <!-- 4. Metas (Forma com Texto Dentro) -->
+            <rect x="490" y="260" width="130" height="42" rx="21" fill="#FDF0D5" stroke="#003049" stroke-width="2" />
+            <text id="node-goals" x="555" y="286" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="600" fill="#003049">metas</text>
+
+            <!-- 4b. Princípios (Sub-cápsula com Texto Dentro) -->
+            <rect x="636" y="266" width="86" height="30" rx="15" fill="#003049" fill-opacity="0.08" stroke="#003049" stroke-opacity="0.25" stroke-width="1.2" />
+            <text id="node-principles" x="679" y="285" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="500" fill="#003049">princípios</text>
+
+            <!-- 5. Inbox (Forma com Texto Dentro) -->
+            <rect x="285" y="316" width="170" height="36" rx="18" fill="#FDF0D5" stroke="#003049" stroke-width="1.5" />
+            <text id="node-inbox" x="370" y="339" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="15" font-style="italic" fill="#003049">inbox & anotações</text>
+
+            <!-- Nó Central: Você & AGENTS.md (Hub amplo e confortável) -->
+            <rect x="292" y="143" width="156" height="84" rx="42" stroke="#003049" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity="0.25" fill="none" />
+            <rect x="300" y="151" width="140" height="68" rx="34" fill="#003049" />
+            <text id="node-center-you" x="370" y="180" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="20" font-style="italic" font-weight="500" fill="#FDF0D5">você</text>
+            <rect x="325" y="189" width="90" height="20" rx="10" fill="#669BBC" fill-opacity="0.25" />
+            <text x="370" y="203" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#669BBC" letter-spacing="0.05em">AGENTS.MD</text>
+          </svg>
+        </div>
+
+        <!-- Interface Fragment 1: Navegador do Cofre Obsidian Real (data-ui) -->
+        <div data-ui="vault-tree" class="md:col-span-5 bg-[#003049] text-[#FDF0D5] p-6 rounded-2xl flex flex-col justify-between min-h-[300px] motion-item">
+          <div>
+            <div class="flex items-center justify-between pb-3 text-base text-[#FDF0D5]/70 font-medium">
+              <span class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#C1121F]"></span>
+                <span class="text-white font-semibold">meu-segundo-cerebro</span>
+              </span>
+              <span class="text-sm text-[#669BBC] bg-[#669BBC]/10 px-2 py-0.5 rounded">Obsidian Vault</span>
+            </div>
+
+            <div class="space-y-3 text-base text-[#FDF0D5]/90 pt-3">
+              <div class="flex items-center gap-2 text-white font-medium bg-white/5 p-2 rounded-lg">
+                <span class="text-sm font-semibold text-[#669BBC]">[doc]</span>
+                <span>AGENTS.md</span>
+                <span class="text-sm bg-[#669BBC]/20 text-[#669BBC] px-2 py-0.5 rounded ml-auto">raiz</span>
+              </div>
+              <div class="pl-3 border-l border-white/10 space-y-2 text-base text-[#FDF0D5]/85">
+                <div class="py-0.5">
+                  <div class="font-semibold text-white flex items-center gap-1.5">
+                    <span class="text-sm text-[#669BBC]">[pasta]</span>
+                    <span>01 - Contexto/</span>
+                  </div>
+                  <div class="pl-5 text-sm text-[#FDF0D5]/75 space-y-1 pt-1">
+                    <div>• PERFIL.md</div>
+                    <div>• Objetivos e Progresso.md</div>
+                  </div>
+                </div>
+                <div class="py-0.5">
+                  <div class="font-semibold text-white flex items-center gap-1.5">
+                    <span class="text-sm text-[#669BBC]">[pasta]</span>
+                    <span>03 - Projetos/</span>
+                  </div>
+                  <div class="pl-5 text-sm text-[#FDF0D5]/75 pt-1">
+                    <div>• Projeto Alfa/ (AGENTS.md + checklist)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 text-sm text-[#669BBC] flex items-center justify-between">
+            <span>Zero lock-in em nuvem</span>
+            <span>100% Markdown local</span>
+          </div>
+        </div>
       </div>
-
-      <p id="fig1-caption" class="text-xs text-[#003049]/60 font-editorial italic text-center mt-2">
-        Uma rede viva em arquivos locais de texto: o contexto parte de você e se ramifica sem depender de formatos proprietários na nuvem.
-      </p>
     </section>
 
-    <!-- Artigo / Manifesto Editorial -->
-    <article class="space-y-6 text-[16px] sm:text-[17px] text-[#003049]/90 leading-relaxed font-normal my-14">
-      <p id="art-p1" class="first-letter:font-editorial first-letter:text-5xl sm:first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:text-[#C1121F] first-letter:leading-none">
+    <!-- Artigo / Manifesto Local-First -->
+    <article id="manifesto" class="motion-item space-y-6 pt-4">
+      <h2 id="art-title" class="font-editorial text-2xl sm:text-4xl text-[#003049] font-normal mb-6">Por que arquivos locais e texto puro</h2>
+
+      <p id="art-p1" class="text-base sm:text-lg leading-relaxed text-[#003049]/90 max-w-[55ch] first-letter:font-editorial first-letter:text-5xl sm:first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:text-[#C1121F] first-letter:leading-none">
         A maioria dos guias de produtividade com inteligência artificial comete o mesmo erro: assume que você quer passar horas organizando pastas perfeitas, criando prompts manuais gigantes a cada sessão ou ficando refém de uma única assinatura proprietária na nuvem.
       </p>
       
-      <p id="art-p2">
+      <p id="art-p2" class="text-base sm:text-lg leading-relaxed text-[#003049]/90 max-w-[55ch]">
         Na prática, quanto mais burocrático e engessado o sistema, mais rápido ele é abandonado. O que realmente funciona no dia a dia de quem constrói produtos, estuda ou programa é algo <strong>leve, local e imune a lock-in</strong>. Um ambiente onde você possa despejar anotações brutas de reuniões sem julgamento, mas que permita à IA entender com precisão cirúrgica quem você é e quais são suas regras.
       </p>
 
-      <p id="art-p3">
-        Construí essa arquitetura combinando três pilares: o <strong>Obsidian</strong> (como leitor de arquivos locais em Markdown), o padrão aberto <strong>AGENTS.md</strong> (compatível com Claude Code, Gemini CLI e Antigravity) e uma <strong>separação em duas camadas</strong> (estratégia vs. execução).
+      <p id="art-p3" class="text-base sm:text-lg leading-relaxed text-[#003049]/90 max-w-[55ch]">
+        Construí essa arquitetura combinando três pilares: o <strong>Obsidian</strong> (como leitor de arquivos locais em Markdown), o padrão aberto <strong>AGENTS.md</strong> (compatível com Claude Code, Gemini CLI e Antigravity) e uma <strong>separação em duas camadas</strong> (estratégia versus execução).
       </p>
     </article>
 
-    <!-- FIG. 02: O Modelo Concêntrico (ViewBox 400x400 com mais escala e presença) -->
-    <section class="my-16 sm:my-22 py-2">
-      <div class="flex justify-between items-center text-[11px] font-mono-code text-[#C1121F] mb-6 pb-2 border-b border-[#003049]/10">
-        <span id="fig2-header-title">fig. 02 — as três camadas</span>
-        <span id="fig2-header-sub">princípio de soberania</span>
+    <!-- Três Círculos de Soberania (Diagrama) -->
+    <section class="motion-item space-y-6">
+      <div class="pb-3">
+        <h2 id="fig2-title" class="font-editorial text-2xl sm:text-4xl text-[#003049] font-normal">Três círculos de soberania</h2>
+        <p id="fig2-sub" class="text-base text-[#003049]/75 mt-1 max-w-[55ch]">O seu discernimento no centro, guardado pelos seus arquivos, com as IAs orbitando ao redor.</p>
       </div>
 
-      <div class="grid md:grid-cols-12 gap-8 items-center my-6">
-        <!-- SVG Concêntrico: VOCÊ -> ARQUIVOS -> IA com proporções ampliadas -->
-        <div class="md:col-span-6 flex justify-center">
-          <svg class="w-full max-w-[360px] h-auto" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Camada 3: Círculo Externo (Inteligência Artificial) -->
-            <circle cx="200" cy="200" r="180" stroke="#003049" stroke-width="1.2" stroke-dasharray="3 3" stroke-opacity="0.35" />
-            <!-- Texto DENTRO do 3º círculo (entre r=120 e r=180: topo 20 a 80) -->
-            <text id="fig2-ring3-text" x="200" y="47" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="14.5" font-style="italic" fill="#003049">inteligência artificial</text>
-            <text x="200" y="63" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#669BBC">claude · gemini · antigravity</text>
+      <div class="grid md:grid-cols-12 gap-8 items-center bg-[#F7E9CE] p-6 sm:p-8 rounded-2xl motion-item">
+        <!-- SVG Concêntrico -->
+        <div class="md:col-span-5 flex justify-center">
+          <svg class="w-full max-w-[320px] h-auto" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="200" r="180" stroke="#003049" stroke-width="1.6" stroke-dasharray="4 4" stroke-opacity="0.35" />
+            <text id="fig2-ring3-text" x="200" y="47" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="15" font-style="italic" fill="#003049">inteligência artificial</text>
+            <text x="200" y="65" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#669BBC">claude · gemini · antigravity</text>
 
-            <!-- Camada 2: Círculo Intermediário (Seus Arquivos) -->
-            <circle cx="200" cy="200" r="120" stroke="#003049" stroke-width="1.3" stroke-opacity="0.65" fill="#FDF0D5" />
-            <!-- Texto DENTRO do 2º círculo (entre r=55 e r=120: topo 80 a 145) -->
-            <text id="fig2-ring2-title" x="200" y="110" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="14.5" font-style="italic" fill="#003049">seus arquivos</text>
-            <text x="200" y="126" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#669BBC">markdown · obsidian</text>
+            <circle cx="200" cy="200" r="120" stroke="#003049" stroke-width="1.6" stroke-opacity="0.7" fill="#FDF0D5" />
+            <text id="fig2-ring2-title" x="200" y="110" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="15" font-style="italic" fill="#003049">seus arquivos</text>
+            <text x="200" y="128" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#669BBC">markdown · obsidian</text>
 
-            <!-- Camada 1: Círculo Central (Você) -->
-            <circle cx="200" cy="200" r="55" fill="#003049" />
-            <!-- Texto DENTRO do 1º círculo -->
-            <text id="fig2-ring1-title" x="200" y="206" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="17" font-style="italic" fill="#FDF0D5">você</text>
+            <circle cx="200" cy="200" r="58" fill="#003049" />
+            <text id="fig2-ring1-title" x="200" y="206" text-anchor="middle" font-family="'Newsreader', Georgia, serif" font-size="18" font-style="italic" font-weight="500" fill="#FDF0D5">você</text>
           </svg>
         </div>
 
         <!-- Explicação das 3 Camadas -->
-        <div class="md:col-span-6 space-y-4 text-xs sm:text-sm text-[#003049]/80 leading-relaxed">
-          <div class="border-l-2 border-[#003049] pl-3 py-0.5">
-            <strong id="layer1-title" class="font-editorial text-base text-[#003049] block">1. você</strong>
-            <span id="layer1-desc">O dono do discernimento, das prioridades e das decisões. A IA não sabe o que você quer até você formular.</span>
+        <div class="md:col-span-7 space-y-4 text-base text-[#003049]/90 leading-relaxed">
+          <div class="bg-white/50 p-4 rounded-xl motion-item">
+            <strong id="layer1-title" class="font-editorial text-lg text-[#003049] block mb-1">1. Você</strong>
+            <span id="layer1-desc" class="text-base max-w-[55ch] block">O dono do discernimento, das prioridades e das decisões. A IA não tem direção até você formular o objetivo.</span>
           </div>
 
-          <div class="border-l-2 border-[#669BBC] pl-3 py-0.5">
-            <strong id="layer2-title" class="font-editorial text-base text-[#003049] block">2. seus arquivos</strong>
-            <span id="layer2-desc">Seu caderno em Markdown local. É o escudo de soberania: nenhum dado sai sem sua autorização, e toda inteligência gerada fica salva no seu disco.</span>
+          <div class="bg-white/50 p-4 rounded-xl motion-item">
+            <strong id="layer2-title" class="font-editorial text-lg text-[#003049] block mb-1">2. Seus Arquivos</strong>
+            <span id="layer2-desc" class="text-base max-w-[55ch] block">Seu caderno em Markdown local. É o escudo de soberania: nenhum dado sai sem sua autorização, e todo conhecimento fica salvo no seu disco.</span>
           </div>
 
-          <div class="border-l-2 border-[#003049]/30 pl-3 py-0.5">
-            <strong id="layer3-title" class="font-editorial text-base text-[#003049] block">3. as inteligências artificiais</strong>
-            <span id="layer3-desc">Claude, Gemini ou Antigravity orbitam os seus arquivos. Elas leem e executam. Se uma mudar amanhã, você apenas troca sem perder sua mente.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pilares -->
-    <section class="my-16">
-      <div id="pillars-badge" class="text-xs font-mono-code text-[#C1121F] uppercase tracking-wider mb-2">
-        // os pilares
-      </div>
-      <h2 id="pillars-title" class="font-editorial text-2xl sm:text-3xl text-[#003049] mb-8 font-normal">três alívios imediatos.</h2>
-
-      <div class="grid sm:grid-cols-3 gap-4 sm:gap-5">
-        <!-- Pilar 1 -->
-        <div class="p-5 bg-white/40 rounded-xl border border-[#003049]/10">
-          <div id="pilar1-tag" class="font-mono-code text-[10px] text-[#669BBC] mb-2 uppercase">01 — memória</div>
-          <h3 id="pilar1-title" class="font-editorial text-xl text-[#003049] mb-2 font-normal">zero reexplicação</h3>
-          <p id="pilar1-desc" class="text-xs text-[#003049]/70 leading-relaxed">
-            Você nunca mais começa uma conversa dizendo quem você é. A IA já lê o seu contexto ao abrir a pasta.
-          </p>
-        </div>
-
-        <!-- Pilar 2 -->
-        <div class="p-5 bg-white/40 rounded-xl border border-[#003049]/10">
-          <div id="pilar2-tag" class="font-mono-code text-[10px] text-[#669BBC] mb-2 uppercase">02 — soberania</div>
-          <h3 id="pilar2-title" class="font-editorial text-xl text-[#003049] mb-2 font-normal">imune a lock-in</h3>
-          <p id="pilar2-desc" class="text-xs text-[#003049]/70 leading-relaxed">
-            Lançou um modelo novo? O mesmo cofre e os mesmos comandos continuam funcionando sem alterar nada.
-          </p>
-        </div>
-
-        <!-- Pilar 3 -->
-        <div class="p-5 bg-white/40 rounded-xl border border-[#003049]/10">
-          <div id="pilar3-tag" class="font-mono-code text-[10px] text-[#669BBC] mb-2 uppercase">03 — foco</div>
-          <h3 id="pilar3-title" class="font-editorial text-xl text-[#003049] mb-2 font-normal">sem alucinação</h3>
-          <p id="pilar3-desc" class="text-xs text-[#003049]/70 leading-relaxed">
-            Cada projeto vive na sua pasta com escopo delimitado. A IA só lê o que importa para aquela entrega.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- As Duas Camadas de Pastas (01 e 02 ambos com o mesmo azul #669BBC) -->
-    <section class="my-16 p-6 sm:p-8 bg-[#003049] text-[#FDF0D5] rounded-2xl">
-      <div id="layers-box-badge" class="text-xs font-mono-code tracking-wider uppercase text-[#669BBC] mb-2">// no cofre</div>
-      <h2 id="layers-box-title" class="font-editorial text-2xl sm:text-3xl text-[#FDF0D5] mb-6 font-normal">duas camadas simples.</h2>
-      
-      <div class="space-y-6 text-xs sm:text-sm text-[#FDF0D5]/80">
-        <!-- 01 com o mesmo azul #669BBC de 02 -->
-        <div class="flex gap-4 items-start pb-5 border-b border-white/10">
-          <div class="w-7 h-7 rounded-full bg-[#669BBC] text-[#003049] flex items-center justify-center font-mono-code font-bold text-xs shrink-0 mt-0.5">01</div>
-          <div>
-            <strong id="box-l1-title" class="text-white block text-base sm:text-lg font-editorial font-normal mb-1">Camada 1: Sua Vida (Estratégia)</strong>
-            <p id="box-l1-desc" class="text-xs sm:text-sm text-[#FDF0D5]/70 leading-relaxed">
-              Na raiz: seu perfil, princípios e metas amplas. Aqui a IA pensa com você, aponta excessos e ajuda a tomar decisões de longo prazo.
-            </p>
-          </div>
-        </div>
-
-        <div class="flex gap-4 items-start">
-          <div class="w-7 h-7 rounded-full bg-[#669BBC] text-[#003049] flex items-center justify-center font-mono-code font-bold text-xs shrink-0 mt-0.5">02</div>
-          <div>
-            <strong id="box-l2-title" class="text-white block text-base sm:text-lg font-editorial font-normal mb-1">Camada 2: Seus Projetos (Execução)</strong>
-            <p id="box-l2-desc" class="text-xs sm:text-sm text-[#FDF0D5]/70 leading-relaxed">
-              Uma pasta por iniciativa. Aqui a IA não filosofa: ela tem um checklist e critério claro de entrega até terminar.
-            </p>
+          <div class="bg-white/50 p-4 rounded-xl motion-item">
+            <strong id="layer3-title" class="font-editorial text-lg text-[#003049] block mb-1">3. As Inteligências Artificiais</strong>
+            <span id="layer3-desc" class="text-base max-w-[55ch] block">Claude, Gemini ou Antigravity orbitam os seus arquivos. Elas leem e executam. Se uma mudar amanhã, você apenas troca de agente sem perder sua mente.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Passo a Passo -->
-    <section class="my-16 space-y-10">
+    <!-- Pilares: Composição Editorial Variada -->
+    <section class="motion-item space-y-6">
       <div>
-        <div id="steps-badge" class="text-xs font-mono-code text-[#C1121F] uppercase tracking-wider mb-2">// como começar</div>
-        <h2 id="steps-title" class="font-editorial text-2xl sm:text-3xl text-[#003049]">três passos práticos.</h2>
+        <h2 id="pillars-title" class="font-editorial text-2xl sm:text-4xl text-[#003049] font-normal">Três alívios imediatos</h2>
+        <p id="pillars-sub" class="text-base text-[#003049]/75 mt-1 max-w-[55ch]">O que muda no seu primeiro dia trabalhando com esse modelo.</p>
       </div>
 
-      <!-- Passo 1 -->
-      <div class="relative pl-8 sm:pl-10 border-l border-[#003049]/20 space-y-2">
-        <span class="absolute -left-[13px] top-0.5 w-6 h-6 rounded-full bg-[#FDF0D5] border border-[#003049]/40 text-[#003049] font-mono-code font-bold text-[11px] flex items-center justify-center">1</span>
-        <h3 id="step1-title" class="font-editorial text-xl sm:text-2xl text-[#003049] font-normal">baixe o template aberto</h3>
-        <p id="step1-desc" class="text-xs sm:text-sm text-[#003049]/80 leading-relaxed">
-          Uma estrutura limpa e pronta em Markdown, 100% sanitizada, para você abrir direto como um cofre no Obsidian.
-        </p>
-        <div class="pt-1.5">
-          <a href="https://github.com/patrickzzanca/second-brain-multi-ai" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#003049] text-white text-xs font-mono-code hover:bg-[#C1121F] transition-colors">
-            <span id="step1-btn">Acessar no GitHub</span>
-            <span>→</span>
-          </a>
+      <div class="grid md:grid-cols-12 gap-6 items-stretch">
+        <!-- Pilar 1 em Destaque -->
+        <div class="md:col-span-6 p-7 bg-[#F7E9CE] rounded-2xl flex flex-col justify-between motion-item">
+          <div>
+            <h3 id="pilar1-title" class="font-editorial text-2xl sm:text-3xl text-[#003049] mb-3 font-normal">Memória: zero reexplicação</h3>
+            <p id="pilar1-desc" class="text-base text-[#003049]/85 leading-relaxed max-w-[55ch]">
+              Você nunca mais começa uma conversa dizendo quem você é. A IA já lê o seu contexto ao abrir a pasta, eliminando prompts repetitivos.
+            </p>
+          </div>
+          <div class="pt-6 text-sm text-[#003049]/60">Contexto persistido em disco local</div>
+        </div>
+
+        <!-- Pilares 2 e 3 Empilhados em Coluna Editorial -->
+        <div class="md:col-span-6 space-y-6">
+          <div class="p-6 bg-[#F7E9CE] rounded-2xl motion-item">
+            <h3 id="pilar2-title" class="font-editorial text-xl sm:text-2xl text-[#003049] mb-2 font-normal">Soberania: imune a lock-in</h3>
+            <p id="pilar2-desc" class="text-base text-[#003049]/85 leading-relaxed max-w-[55ch]">
+              Lançou um modelo novo? O mesmo cofre e os mesmos comandos continuam funcionando sem alterar uma linha de configuração.
+            </p>
+          </div>
+
+          <div class="p-6 bg-[#F7E9CE] rounded-2xl motion-item">
+            <h3 id="pilar3-title" class="font-editorial text-xl sm:text-2xl text-[#003049] mb-2 font-normal">Foco: sem alucinações</h3>
+            <p id="pilar3-desc" class="text-base text-[#003049]/85 leading-relaxed max-w-[55ch]">
+              Cada projeto vive na sua pasta com escopo delimitado. A IA só lê o que importa para aquela entrega específica.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Passo 2 -->
-      <div class="relative pl-8 sm:pl-10 border-l border-[#003049]/20 space-y-2">
-        <span class="absolute -left-[13px] top-0.5 w-6 h-6 rounded-full bg-[#FDF0D5] border border-[#003049]/40 text-[#003049] font-mono-code font-bold text-[11px] flex items-center justify-center">2</span>
-        <h3 id="step2-title" class="font-editorial text-xl sm:text-2xl text-[#003049] font-normal">deixe a IA te entrevistar</h3>
-        <p id="step2-desc" class="text-xs sm:text-sm text-[#003049]/80 leading-relaxed">
-          Abra o terminal do seu assistente (Claude Code, Antigravity ou Cursor) e rode o comando:
-        </p>
-        
-        <div class="bg-[#003049] text-[#FDF0D5] rounded-xl p-3 sm:p-3.5 flex items-center justify-between font-mono-code text-xs sm:text-sm">
-          <span>/configurar-cerebro</span>
-          <button onclick="copyCommand('/configurar-cerebro', this)" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-[#FDF0D5] rounded text-xs transition-colors font-mono-code">
-            <span class="copy-btn-txt">copiar</span>
-          </button>
+    <!-- As Duas Camadas de Pastas no Cofre com Interface Fragments 2 e 3 -->
+    <section class="motion-item p-6 sm:p-10 bg-[#003049] text-[#FDF0D5] rounded-3xl space-y-8">
+      <div>
+        <h2 id="layers-box-title" class="font-editorial text-2xl sm:text-4xl text-[#FDF0D5] font-normal">Duas camadas simples no cofre</h2>
+        <p id="layers-box-sub" class="text-base text-[#FDF0D5]/75 mt-1 max-w-[55ch]">Estratégia e princípios na raiz; foco e execução cirúrgica nos projetos.</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Camada 1 + Interface Fragment 2 (AGENTS.md em <pre><code>) -->
+        <div data-ui="preview-agents" class="min-w-0 bg-white/10 p-5 rounded-2xl flex flex-col justify-between min-h-[300px] motion-item">
+          <div>
+            <div class="flex items-center justify-between pb-3 text-base text-[#669BBC] font-medium">
+              <span>Camada 1: Sua Vida (Estratégia)</span>
+              <span class="text-sm bg-white/10 px-2 py-0.5 rounded">AGENTS.md</span>
+            </div>
+            <p id="box-l1-desc" class="text-base text-[#FDF0D5]/80 mb-4 leading-relaxed max-w-[55ch]">
+              Na raiz: perfil, princípios e metas. Aqui a IA pensa com você, aponta excessos e ajuda a tomar decisões de longo prazo.
+            </p>
+            <pre class="bg-black/35 p-3.5 rounded-lg text-xs overflow-x-auto max-w-full whitespace-pre-wrap"><code class="font-mono-code text-[#FDF0D5]/90 block"># AGENTS.md — Regras Globais
+## Quem e o Usuario
+- Foco: Engenharia & Clareza
+## Regras de Operacao
+- Peca autorizacao antes de gravar
+- Direto e sem rodeios</code></pre>
+          </div>
+          <div class="pt-3 text-sm text-[#669BBC]">Lido na raiz por Claude, Antigravity e Cursor</div>
         </div>
-        <p id="step2-tip" class="text-xs text-[#003049]/60 font-editorial italic">
-          dica: responda usando o ditado de voz para ser mais espontâneo.
-        </p>
+
+        <!-- Camada 2 + Interface Fragment 3 (checklist.md em <pre><code>) -->
+        <div data-ui="preview-checklist" class="min-w-0 bg-white/10 p-5 rounded-2xl flex flex-col justify-between min-h-[300px] motion-item">
+          <div>
+            <div class="flex items-center justify-between pb-3 text-base text-[#669BBC] font-medium">
+              <span>Camada 2: Seus Projetos (Execução)</span>
+              <span class="text-sm bg-white/10 px-2 py-0.5 rounded">checklist.md</span>
+            </div>
+            <p id="box-l2-desc" class="text-base text-[#FDF0D5]/80 mb-4 leading-relaxed max-w-[55ch]">
+              Uma pasta por iniciativa. Aqui a IA não filosofa: ela tem um checklist e critério claro de entrega (DoD) até terminar.
+            </p>
+            <pre class="bg-black/35 p-3.5 rounded-lg text-xs overflow-x-auto max-w-full whitespace-pre-wrap"><code class="font-mono-code text-[#FDF0D5]/90 block"># Projeto Alfa — checklist.md
+## Definition of Done (DoD)
+[x] Escopo validado
+[x] Testes passando
+[ ] Deploy finalizado</code></pre>
+          </div>
+          <div class="pt-3 text-sm text-[#669BBC]">Isolamento de contexto por iniciativa</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Passo a Passo com Interface Fragment 4 (Terminal CLI em <pre><code>) -->
+    <section class="motion-item space-y-8">
+      <div>
+        <h2 id="steps-title" class="font-editorial text-2xl sm:text-4xl text-[#003049] font-normal">Três passos práticos</h2>
+        <p id="steps-sub" class="text-base text-[#003049]/75 mt-1 max-w-[55ch]">Como começar em menos de quinze minutos.</p>
       </div>
 
-      <!-- Passo 3 -->
-      <div class="relative pl-8 sm:pl-10 border-l border-[#003049]/20 space-y-2">
-        <span class="absolute -left-[13px] top-0.5 w-6 h-6 rounded-full bg-[#FDF0D5] border border-[#003049]/40 text-[#003049] font-mono-code font-bold text-[11px] flex items-center justify-center">3</span>
-        <h3 id="step3-title" class="font-editorial text-xl sm:text-2xl text-[#003049] font-normal">crie projetos focados</h3>
-        <p id="step3-desc" class="text-xs sm:text-sm text-[#003049]/80 leading-relaxed">
-          Para cada iniciativa com começo, meio e fim, use o scaffold automático:
-        </p>
+      <div class="grid md:grid-cols-12 gap-8 items-start">
+        <div class="md:col-span-7 min-w-0 space-y-8">
+          <!-- Passo 1 -->
+          <div class="space-y-2 motion-item">
+            <h3 id="step1-title" class="font-editorial text-xl sm:text-2xl text-[#003049] font-normal">Baixe o template aberto</h3>
+            <p id="step1-desc" class="text-base text-[#003049]/80 leading-relaxed max-w-[55ch]">
+              Uma estrutura limpa e pronta em Markdown, 100% sanitizada, para você abrir direto como um cofre no Obsidian.
+            </p>
+            <div class="pt-2">
+              <a href="https://github.com/patrickzzanca/second-brain-multi-ai" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#003049] text-white text-base font-medium hover:bg-[#C1121F] transition-colors">
+                <span id="step1-btn">Acessar no GitHub</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
 
-        <div class="bg-[#003049] text-[#FDF0D5] rounded-xl p-3 sm:p-3.5 flex items-center justify-between font-mono-code text-xs sm:text-sm">
-          <span>/novo-projeto [nome]</span>
-          <button onclick="copyCommand('/novo-projeto [nome]', this)" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 text-[#FDF0D5] rounded text-xs transition-colors font-mono-code">
-            <span class="copy-btn-txt">copiar</span>
-          </button>
+          <!-- Passo 2 -->
+          <div class="space-y-3 motion-item">
+            <h3 id="step2-title" class="font-editorial text-xl sm:text-2xl text-[#003049] font-normal">Deixe a IA te entrevistar</h3>
+            <p id="step2-desc" class="text-base text-[#003049]/80 leading-relaxed max-w-[55ch]">
+              Abra o terminal do seu assistente (Claude Code, Antigravity ou Cursor) e rode o comando:
+            </p>
+            
+            <div class="bg-[#003049] text-[#FDF0D5] rounded-xl p-3.5 flex items-center justify-between text-base">
+              <code class="font-mono-code text-sm">/configurar-cerebro</code>
+              <button onclick="copyCommand('/configurar-cerebro', this)" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-[#FDF0D5] rounded text-sm font-semibold transition-colors">
+                <span class="copy-btn-txt">copiar</span>
+              </button>
+            </div>
+            <p id="step2-tip" class="text-sm text-[#003049]/70 font-editorial italic max-w-[55ch]">
+              dica: responda usando o ditado de voz para ser mais espontâneo e autêntico.
+            </p>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="space-y-3 motion-item">
+            <h3 id="step3-title" class="font-editorial text-xl sm:text-2xl text-[#003049] font-normal">Crie projetos focados</h3>
+            <p id="step3-desc" class="text-base text-[#003049]/80 leading-relaxed max-w-[55ch]">
+              Para cada iniciativa com começo, meio e fim, use o scaffold automático:
+            </p>
+
+            <div class="bg-[#003049] text-[#FDF0D5] rounded-xl p-3.5 flex items-center justify-between text-base">
+              <code class="font-mono-code text-sm">/novo-projeto [nome]</code>
+              <button onclick="copyCommand('/novo-projeto [nome]', this)" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-[#FDF0D5] rounded text-sm font-semibold transition-colors">
+                <span class="copy-btn-txt">copiar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interface Fragment 4: Sessão de Terminal do Agente (em <pre><code>) -->
+        <div data-ui="terminal-cli" class="md:col-span-5 min-w-0 bg-[#003049] text-[#FDF0D5] p-5 rounded-2xl flex flex-col justify-between min-h-[320px] motion-item">
+          <div>
+            <div class="flex items-center justify-between pb-3 text-sm text-[#669BBC] font-medium border-b border-white/10">
+              <span class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+              </span>
+              <span>claude-code / antigravity</span>
+            </div>
+
+            <pre class="bg-black/35 p-3.5 rounded-lg text-xs mt-3 overflow-x-auto max-w-full whitespace-pre-wrap"><code class="font-mono-code text-[#FDF0D5]/90 block space-y-1"><span class="text-[#669BBC]">$ /configurar-cerebro</span>
+<span class="text-[#FDF0D5]/70">Calibrando perfil em 5 perguntas...</span>
+<span class="text-white font-medium">1: Foco profissional?</span>
+<span class="text-emerald-300">-> Ditado gravado (42s)</span>
+<span class="text-[#FDF0D5]/70">Atualizando PERFIL.md...</span>
+<span class="text-[#669BBC]">[ok] Cofre pronto!</span></code></pre>
+          </div>
+
+          <div class="pt-4 text-sm text-[#669BBC]">Terminal conectado ao disco local</div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="my-16 pt-8 border-t border-[#003049]/10">
-      <div class="text-xs font-mono-code text-[#C1121F] uppercase tracking-wider mb-2">// faq</div>
-      <h2 id="faq-title" class="font-editorial text-2xl sm:text-3xl text-[#003049] mb-6 font-normal">dúvidas comuns.</h2>
+    <section class="motion-item space-y-6">
+      <div>
+        <h2 id="faq-title" class="font-editorial text-2xl sm:text-4xl text-[#003049] font-normal">Dúvidas comuns</h2>
+        <p id="faq-sub" class="text-base text-[#003049]/75 mt-1 max-w-[55ch]">Perguntas frequentes sobre arquitetura, ferramentas e segurança.</p>
+      </div>
 
       <div class="space-y-3">
-        <details class="bg-white/40 border border-[#003049]/10 rounded-xl p-4 text-xs sm:text-sm group cursor-pointer">
-          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-base sm:text-lg">
+        <details class="bg-[#F7E9CE] rounded-xl p-5 text-base group cursor-pointer transition-colors motion-item">
+          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-lg sm:text-xl">
             <span id="faq1-q">Preciso de um computador potente?</span>
-            <span class="text-xs font-mono-code text-[#669BBC] group-open:hidden">[ + ]</span>
-            <span class="text-xs font-mono-code text-[#C1121F] hidden group-open:inline">[ − ]</span>
+            <span class="text-base font-semibold text-[#003049] group-open:rotate-45 transition-transform duration-200">+</span>
           </summary>
-          <p id="faq1-a" class="text-[#003049]/70 mt-3 pt-3 border-t border-[#003049]/10 leading-relaxed">
+          <p id="faq1-a" class="text-[#003049]/80 mt-3 pt-3 leading-relaxed max-w-[55ch]">
             Não. Os arquivos são textos leves em Markdown (.md). Eles rodam perfeitamente em qualquer computador simples.
           </p>
         </details>
 
-        <details class="bg-white/40 border border-[#003049]/10 rounded-xl p-4 text-xs sm:text-sm group cursor-pointer">
-          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-base sm:text-lg">
+        <details class="bg-[#F7E9CE] rounded-xl p-5 text-base group cursor-pointer transition-colors motion-item">
+          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-lg sm:text-xl">
             <span id="faq2-q">Meus dados ficam seguros e privados?</span>
-            <span class="text-xs font-mono-code text-[#669BBC] group-open:hidden">[ + ]</span>
-            <span class="text-xs font-mono-code text-[#C1121F] hidden group-open:inline">[ − ]</span>
+            <span class="text-base font-semibold text-[#003049] group-open:rotate-45 transition-transform duration-200">+</span>
           </summary>
-          <p id="faq2-a" class="text-[#003049]/70 mt-3 pt-3 border-t border-[#003049]/10 leading-relaxed">
+          <p id="faq2-a" class="text-[#003049]/80 mt-3 pt-3 leading-relaxed max-w-[55ch]">
             Sim. O cofre vive 100% no seu disco local, sob controle de versão do seu Git. Nenhuma nota sua é enviada para nuvens fechadas sem seu comando explícito.
           </p>
         </details>
 
-        <details class="bg-white/40 border border-[#003049]/10 rounded-xl p-4 text-xs sm:text-sm group cursor-pointer">
-          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-base sm:text-lg">
+        <details class="bg-[#F7E9CE] rounded-xl p-5 text-base group cursor-pointer transition-colors motion-item">
+          <summary class="font-semibold text-[#003049] flex justify-between items-center list-none font-editorial text-lg sm:text-xl">
             <span id="faq3-q">Por que não usar apenas o Notion?</span>
-            <span class="text-xs font-mono-code text-[#669BBC] group-open:hidden">[ + ]</span>
-            <span class="text-xs font-mono-code text-[#C1121F] hidden group-open:inline">[ − ]</span>
+            <span class="text-base font-semibold text-[#003049] group-open:rotate-45 transition-transform duration-200">+</span>
           </summary>
-          <p id="faq3-a" class="text-[#003049]/70 mt-3 pt-3 border-t border-[#003049]/10 leading-relaxed">
+          <p id="faq3-a" class="text-[#003049]/80 mt-3 pt-3 leading-relaxed max-w-[55ch]">
             O Notion é um banco de dados proprietário na nuvem. Agentes de IA locais têm atrito de latência para ler nele. Arquivos em Markdown no seu disco são lidos instantaneamente.
           </p>
         </details>
       </div>
     </section>
 
-    <!-- Rodapé -->
-    <footer class="mt-20 pt-8 border-t border-[#003049]/10 text-center text-xs font-mono-code text-[#003049]/60 space-y-2">
-      <p id="footer-tagline" class="font-editorial text-base text-[#003049]">
+    <!-- Rodapé Limpo -->
+    <footer class="pt-10 pb-8 text-center text-base text-[#003049]/70 space-y-3 motion-item">
+      <p id="footer-tagline" class="font-editorial text-lg sm:text-xl text-[#003049]">
         construído para dar clareza.
       </p>
       <p>
-        <span id="footer-by">criado por</span> <a href="https://www.linkedin.com/in/patrickzanca/" target="_blank" class="font-semibold underline underline-offset-4 text-[#003049] hover:text-[#C1121F]">patrick zanca</a> · <span id="footer-spec">padrão</span> <span class="font-bold text-[#003049]">AGENTS.md</span> · <span id="footer-license">licença MIT</span>
+        <span id="footer-by">criado por</span> <a href="https://www.linkedin.com/in/patrickzanca/" target="_blank" rel="noopener" class="font-semibold text-[#003049] hover:text-[#C1121F] underline underline-offset-4">patrick zanca</a> · <span id="footer-spec">padrão</span> <span class="font-semibold text-[#003049]">AGENTS.md</span> · <span id="footer-license">licença MIT</span>
       </p>
-      <p class="text-[11px] text-[#669BBC] pt-1">
+      <p class="text-sm text-[#003049]/60 pt-1">
         segundocerebro.nitriviski.xyz · 2026
       </p>
     </footer>
@@ -406,19 +550,20 @@
     // Dicionário Completo de Idiomas (PT-BR / EN-US)
     const i18n = {
       pt: {
-        metaTitle: "Segundo Cérebro Multi-IA — Guia Prático",
+        metaTitle: "Segundo Cérebro Multi-IA — Guia Prático e Manifesto",
         navBrand: "segundo cérebro multi-ia",
-        heroBadge: "guia prático & manifesto",
-        heroTitle: "o seu segundo cérebro com múltiplas inteligências artificiais.",
-        heroSubtitle: "e se a IA já soubesse quem você é, o que está construindo e onde quer chegar — em qualquer ferramenta que você abrir?",
-        metaTimeLbl: "tempo",
-        metaTimeVal: "~15 min",
-        metaStdLbl: "padrão",
-        metaSovLbl: "soberania",
+        heroTitle: "<span class='block'>o seu segundo cérebro</span><span class='block'>com múltiplas IAs.</span>",
+        heroSubtitle: "e se qualquer IA que você abrir já soubesse quem você é, o que está construindo e onde quer chegar?",
+        heroCtaTxt: "Acessar Template no GitHub",
+        heroSecTxt: "Ler o manifesto",
+        metaTimeLbl: "Tempo de setup:",
+        metaTimeVal: "~15 minutos",
+        metaStdLbl: "Padrão aberto:",
+        metaSovLbl: "Soberania:",
         metaSovVal: "zero lock-in",
         
-        fig1HeaderTitle: "fig. 01 — topologia do sistema",
-        fig1Caption: "Uma rede viva em arquivos locais de texto: o contexto parte de você e se ramifica sem depender de formatos proprietários na nuvem.",
+        fig1Title: "Como o sistema se conecta",
+        fig1Sub: "Rede viva em arquivos locais onde o contexto parte de você e ramifica para os projetos.",
         nodeCareer: "carreira",
         nodeDecisions: "decisões",
         nodeStudies: "estudos",
@@ -430,55 +575,52 @@
         nodeInbox: "inbox & anotações",
         nodeCenterYou: "você",
 
+        artTitle: "Por que arquivos locais e texto puro",
         artP1: "A maioria dos guias de produtividade com inteligência artificial comete o mesmo erro: assume que você quer passar horas organizando pastas perfeitas, criando prompts manuais gigantes a cada sessão ou ficando refém de uma única assinatura proprietária na nuvem.",
         artP2: "Na prática, quanto mais burocrático e engessado o sistema, mais rápido ele é abandonado. O que realmente funciona no dia a dia de quem constrói produtos, estuda ou programa é algo <strong>leve, local e imune a lock-in</strong>. Um ambiente onde você possa despejar anotações brutas de reuniões sem julgamento, mas que permita à IA entender com precisão cirúrgica quem você é e quais são suas regras.",
-        artP3: "Construí essa arquitetura combinando três pilares: o <strong>Obsidian</strong> (como leitor de arquivos locais em Markdown), o padrão aberto <strong>AGENTS.md</strong> (compatível com Claude Code, Gemini CLI e Antigravity) e uma <strong>separação em duas camadas</strong> (estratégia vs. execução).",
+        artP3: "Construí essa arquitetura combinando três pilares: o <strong>Obsidian</strong> (como leitor de arquivos locais em Markdown), o padrão aberto <strong>AGENTS.md</strong> (compatível com Claude Code, Gemini CLI e Antigravity) e uma <strong>separação em duas camadas</strong> (estratégia versus execução).",
 
-        fig2HeaderTitle: "fig. 02 — as três camadas",
-        fig2HeaderSub: "princípio de soberania",
+        fig2Title: "Três círculos de soberania",
+        fig2Sub: "O seu discernimento no centro, guardado pelos seus arquivos, com as IAs orbitando ao redor.",
         fig2Ring3Text: "inteligência artificial",
         fig2Ring2Title: "seus arquivos",
         fig2Ring1Title: "você",
-        layer1Title: "1. você",
-        layer1Desc: "O dono do discernimento, das prioridades e das decisões. A IA não sabe o que você quer até você formular.",
-        layer2Title: "2. seus arquivos",
-        layer2Desc: "Seu caderno em Markdown local. É o escudo de soberania: nenhum dado sai sem sua autorização, e toda inteligência gerada fica salva no seu disco.",
-        layer3Title: "3. as inteligências artificiais",
-        layer3Desc: "Claude, Gemini ou Antigravity orbitam os seus arquivos. Elas leem e executam. Se uma mudar amanhã, você apenas troca sem perder sua mente.",
+        layer1Title: "1. Você",
+        layer1Desc: "O dono do discernimento, das prioridades e das decisões. A IA não tem direção até você formular o objetivo.",
+        layer2Title: "2. Seus Arquivos",
+        layer2Desc: "Seu caderno em Markdown local. É o escudo de soberania: nenhum dado sai sem sua autorização, e todo conhecimento fica salvo no seu disco.",
+        layer3Title: "3. As Inteligências Artificiais",
+        layer3Desc: "Claude, Gemini ou Antigravity orbitam os seus arquivos. Elas leem e executam. Se uma mudar amanhã, você apenas troca de agente sem perder sua mente.",
 
-        pillarsBadge: "// os pilares",
-        pillarsTitle: "três alívios imediatos.",
-        pilar1Tag: "01 — memória",
-        pilar1Title: "zero reexplicação",
-        pilar1Desc: "Você nunca mais começa uma conversa dizendo quem você é. A IA já lê o seu contexto ao abrir a pasta.",
-        pilar2Tag: "02 — soberania",
-        pilar2Title: "imune a lock-in",
-        pilar2Desc: "Lançou um modelo novo? O mesmo cofre e os mesmos comandos continuam funcionando sem alterar nada.",
-        pilar3Tag: "03 — foco",
-        pilar3Title: "sem alucinação",
-        pilar3Desc: "Cada projeto vive na sua pasta com escopo delimitado. A IA só lê o que importa para aquela entrega.",
+        pillarsTitle: "Três alívios imediatos",
+        pillarsSub: "O que muda no seu primeiro dia trabalhando com esse modelo.",
+        pilar1Title: "Memória: zero reexplicação",
+        pilar1Desc: "Você nunca mais começa uma conversa dizendo quem você é. A IA já lê o seu contexto ao abrir a pasta, eliminando prompts repetitivos.",
+        pilar2Title: "Soberania: imune a lock-in",
+        pilar2Desc: "Lançou um modelo novo? O mesmo cofre e os mesmos comandos continuam funcionando sem alterar uma linha de configuração.",
+        pilar3Title: "Foco: sem alucinações",
+        pilar3Desc: "Cada projeto vive na sua pasta com escopo delimitado. A IA só lê o que importa para aquela entrega específica.",
 
-        layersBoxBadge: "// no cofre",
-        layersBoxTitle: "duas camadas simples.",
-        boxL1Title: "Camada 1: Sua Vida (Estratégia)",
-        boxL1Desc: "Na raiz: seu perfil, princípios e metas amplas. Aqui a IA pensa com você, aponta excessos e ajuda a tomar decisões de longo prazo.",
-        boxL2Title: "Camada 2: Seus Projetos (Execução)",
-        boxL2Desc: "Uma pasta por iniciativa. Aqui a IA não filosofa: ela tem um checklist e critério claro de entrega até terminar.",
+        layersBoxTitle: "Duas camadas simples no cofre",
+        layersBoxSub: "Estratégia e princípios na raiz; foco e execução cirúrgica nos projetos.",
+        boxL1Desc: "Na raiz: perfil, princípios e metas. Aqui a IA pensa com você, aponta excessos e ajuda a tomar decisões de longo prazo.",
+        boxL2Desc: "Uma pasta por iniciativa. Aqui a IA não filosofa: ela tem um checklist e critério claro de entrega (DoD) até terminar.",
 
-        stepsBadge: "// como começar",
-        stepsTitle: "três passos práticos.",
-        step1Title: "baixe o template aberto",
+        stepsTitle: "Três passos práticos",
+        stepsSub: "Como começar em menos de quinze minutos.",
+        step1Title: "Baixe o template aberto",
         step1Desc: "Uma estrutura limpa e pronta em Markdown, 100% sanitizada, para você abrir direto como um cofre no Obsidian.",
         step1Btn: "Acessar no GitHub",
-        step2Title: "deixe a IA te entrevistar",
+        step2Title: "Deixe a IA te entrevistar",
         step2Desc: "Abra o terminal do seu assistente (Claude Code, Antigravity ou Cursor) e rode o comando:",
-        step2Tip: "dica: responda usando o ditado de voz para ser mais espontâneo.",
-        step3Title: "crie projetos focados",
+        step2Tip: "dica: responda usando o ditado de voz para ser mais espontâneo e autêntico.",
+        step3Title: "Crie projetos focados",
         step3Desc: "Para cada iniciativa com começo, meio e fim, use o scaffold automático:",
         copyTxt: "copiar",
         copiedTxt: "copiado [ok]",
 
-        faqTitle: "dúvidas comuns.",
+        faqTitle: "Dúvidas comuns",
+        faqSub: "Perguntas frequentes sobre arquitetura, ferramentas e segurança.",
         faq1Q: "Preciso de um computador potente?",
         faq1A: "Não. Os arquivos são textos leves em Markdown (.md). Eles rodam perfeitamente em qualquer computador simples.",
         faq2Q: "Meus dados ficam seguros e privados?",
@@ -492,21 +634,22 @@
         footerLicense: "licença MIT"
       },
       en: {
-        metaTitle: "Multi-AI Second Brain — Practical Guide",
+        metaTitle: "Multi-AI Second Brain — Practical Guide & Manifesto",
         navBrand: "multi-ai second brain",
-        heroBadge: "practical guide & manifesto",
-        heroTitle: "your second brain with multiple artificial intelligences.",
-        heroSubtitle: "what if AI already knew who you are, what you are building, and where you want to go — in whichever tool you open?",
-        metaTimeLbl: "setup",
-        metaTimeVal: "~15 min",
-        metaStdLbl: "standard",
-        metaSovLbl: "sovereignty",
+        heroTitle: "<span class='block'>your second brain</span><span class='block'>with multiple AIs.</span>",
+        heroSubtitle: "what if any artificial intelligence already knew who you are, what you are building, and where you want to go?",
+        heroCtaTxt: "Get Open Template on GitHub",
+        heroSecTxt: "Read the manifesto",
+        metaTimeLbl: "Setup time:",
+        metaTimeVal: "~15 minutes",
+        metaStdLbl: "Open standard:",
+        metaSovLbl: "Sovereignty:",
         metaSovVal: "zero lock-in",
         
-        fig1HeaderTitle: "fig. 01 — system topology",
-        fig1Caption: "A living network of plain-text local files: context originates from you and branches out without proprietary cloud lock-in.",
+        fig1Title: "How the system connects",
+        fig1Sub: "A living local-first file network where context originates from you and branches into scoped projects.",
         nodeCareer: "career",
-        nodeDecisions: "decisions",
+        nodeDecisions: "decisões",
         nodeStudies: "studies",
         nodeReadings: "readings",
         nodeProjects: "projects",
@@ -516,55 +659,52 @@
         nodeInbox: "inbox & daily notes",
         nodeCenterYou: "you",
 
+        artTitle: "Why local files and plain text",
         artP1: "Most AI productivity guides make the same fundamental mistake: they assume you want to spend hours crafting perfect folders, typing massive manual prompts on every prompt window, or locking yourself into a single proprietary cloud subscription.",
         artP2: "In practice, the more rigid and bureaucratic a system is, the faster it gets abandoned. What truly works for builders, researchers, and engineers is something <strong>lightweight, local-first, and immune to lock-in</strong>. An environment where you can dump raw meeting notes without judgment, yet allows AI agents to understand with surgical accuracy who you are and your ground rules.",
-        artP3: "I built this architecture around three core pillars: <strong>Obsidian</strong> (as a local Markdown viewer), the open <strong>AGENTS.md</strong> standard (supported by Claude Code, Gemini CLI, and Antigravity), and a <strong>clean two-layer separation</strong> (strategy vs. execution).",
+        artP3: "I built this architecture around three core pillars: <strong>Obsidian</strong> (as a local Markdown viewer), the open <strong>AGENTS.md</strong> standard (supported by Claude Code, Gemini CLI, and Antigravity), and a <strong>clean two-layer separation</strong> (strategy versus execution).",
 
-        fig2HeaderTitle: "fig. 02 — the three concentric layers",
-        fig2HeaderSub: "principle of sovereignty",
+        fig2Title: "Three concentric sovereignty circles",
+        fig2Sub: "Your judgment at the core, safeguarded by your files, with AIs orbiting around them.",
         fig2Ring3Text: "artificial intelligence",
         fig2Ring2Title: "your local files",
         fig2Ring1Title: "you",
-        layer1Title: "1. you",
+        layer1Title: "1. You",
         layer1Desc: "The core of judgment, intent, and decisions. AI has no direction until you formulate it.",
-        layer2Title: "2. your files",
+        layer2Title: "2. Your Files",
         layer2Desc: "Your local Markdown notebook. The protective membrane: no data leaves without explicit consent, and all accumulated intelligence stays on your physical disk.",
-        layer3Title: "3. artificial intelligences",
+        layer3Title: "3. Artificial Intelligences",
         layer3Desc: "Claude, Gemini, Antigravity, or Cursor orbit around your files. They read and execute. If one changes pricing or degrades tomorrow, you switch in seconds without losing your mind.",
 
-        pillarsBadge: "// the core pillars",
-        pillarsTitle: "three immediate reliefs.",
-        pilar1Tag: "01 — memory",
-        pilar1Title: "zero re-explaining",
+        pillarsTitle: "Three immediate reliefs",
+        pillarsSub: "What changes from day one using this workflow.",
+        pilar1Title: "Memory: zero re-explaining",
         pilar1Desc: "You never start a prompt explaining who you are or your background. The agent reads your context upon launching.",
-        pilar2Tag: "02 — sovereignty",
-        pilar2Title: "immune to lock-in",
+        pilar2Title: "Sovereignty: immune to lock-in",
         pilar2Desc: "A new breakthrough model drops? The exact same vault, notes, and commands keep working without altering a single line.",
-        pilar3Tag: "03 — focus",
-        pilar3Title: "zero hallucinations",
+        pilar3Title: "Focus: zero hallucinations",
         pilar3Desc: "Each project lives in its own scoped folder. The AI only reads what matters for that specific deliverable, saving tokens and focus.",
 
-        layersBoxBadge: "// in the vault",
-        layersBoxTitle: "two simple layers.",
-        boxL1Title: "Layer 1: Your Life (Strategy)",
-        boxL1Desc: "At the root: your profile, principles, and long-term milestones. Here, AI thinks with you, challenges overreach, and helps make strategic decisions.",
-        boxL2Title: "Layer 2: Your Projects (Execution)",
+        layersBoxTitle: "Two simple layers in the vault",
+        layersBoxSub: "Strategy and principles at root; focus and surgical execution in project folders.",
+        boxL1Desc: "At the root: profile, principles, and long-term milestones. Here, AI thinks with you, challenges overreach, and helps make strategic decisions.",
         boxL2Desc: "One folder per initiative. Here, AI doesn't philosophize: it adheres to an explicit checklist and a clear Definition of Done until finished.",
 
-        stepsBadge: "// how to get started",
-        stepsTitle: "three practical steps.",
-        step1Title: "download the open template",
+        stepsTitle: "Three practical steps",
+        stepsSub: "How to get started in less than fifteen minutes.",
+        step1Title: "Download the open template",
         step1Desc: "A clean, production-ready Markdown vault, 100% sanitized, ready to open directly in Obsidian.",
         step1Btn: "View on GitHub",
-        step2Title: "let the AI interview you",
+        step2Title: "Let the AI interview you",
         step2Desc: "Open your AI coding terminal (Claude Code, Antigravity, or Cursor) and run:",
         step2Tip: "tip: answer using voice dictation to stay authentic and spontaneous.",
-        step3Title: "spin up focused projects",
+        step3Title: "Spin up focused projects",
         step3Desc: "For every initiative with a clear beginning, middle, and end, run the scaffolding command:",
         copyTxt: "copy",
         copiedTxt: "copied [ok]",
 
-        faqTitle: "frequently asked questions.",
+        faqTitle: "Frequently asked questions",
+        faqSub: "Common questions about architecture, tools, and privacy.",
         faq1Q: "Do I need a powerful computer?",
         faq1A: "No. Plain-text Markdown files (.md) are nearly weightless. They run effortlessly on any standard laptop or desktop without heating up.",
         faq2Q: "Is my personal data private and secure?",
@@ -586,25 +726,24 @@
       const t = i18n[lang];
       if (!t) return;
 
-      // Atualiza botões
       const btnPt = document.getElementById('btn-pt');
       const btnEn = document.getElementById('btn-en');
       if (lang === 'pt') {
-        btnPt.className = 'px-1.5 py-0.5 rounded bg-[#003049] text-[#FDF0D5] font-semibold transition-all';
-        btnEn.className = 'px-1.5 py-0.5 rounded text-[#003049]/60 hover:text-[#003049] transition-all';
+        btnPt.className = 'px-2.5 py-1 rounded bg-[#003049] text-[#FDF0D5] transition-all';
+        btnEn.className = 'px-2.5 py-1 rounded text-[#003049]/70 hover:text-[#003049] transition-all';
         document.documentElement.lang = 'pt-BR';
       } else {
-        btnEn.className = 'px-1.5 py-0.5 rounded bg-[#003049] text-[#FDF0D5] font-semibold transition-all';
-        btnPt.className = 'px-1.5 py-0.5 rounded text-[#003049]/60 hover:text-[#003049] transition-all';
+        btnEn.className = 'px-2.5 py-1 rounded bg-[#003049] text-[#FDF0D5] transition-all';
+        btnPt.className = 'px-2.5 py-1 rounded text-[#003049]/70 hover:text-[#003049] transition-all';
         document.documentElement.lang = 'en-US';
       }
 
-      // Atualiza textos
       document.getElementById('meta-title').innerText = t.metaTitle;
       document.getElementById('nav-brand').innerText = t.navBrand;
-      document.getElementById('hero-badge').innerText = t.heroBadge;
-      document.getElementById('hero-title').innerText = t.heroTitle;
+      document.getElementById('hero-title').innerHTML = t.heroTitle;
       document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+      document.getElementById('hero-cta-txt').innerText = t.heroCtaTxt;
+      document.getElementById('hero-sec-txt').innerText = t.heroSecTxt;
       document.getElementById('meta-time-lbl').innerText = t.metaTimeLbl;
       document.getElementById('meta-time-val').innerText = t.metaTimeVal;
       document.getElementById('meta-std-lbl').innerText = t.metaStdLbl;
@@ -612,8 +751,8 @@
       document.getElementById('meta-sov-val').innerText = t.metaSovVal;
 
       // Fig 1
-      document.getElementById('fig1-header-title').innerText = t.fig1HeaderTitle;
-      document.getElementById('fig1-caption').innerText = t.fig1Caption;
+      document.getElementById('fig1-title').innerText = t.fig1Title;
+      document.getElementById('fig1-sub').innerText = t.fig1Sub;
       document.getElementById('node-career').textContent = t.nodeCareer;
       document.getElementById('node-decisions').textContent = t.nodeDecisions;
       document.getElementById('node-studies').textContent = t.nodeStudies;
@@ -626,13 +765,14 @@
       document.getElementById('node-center-you').textContent = t.nodeCenterYou;
 
       // Artigo
+      document.getElementById('art-title').innerText = t.artTitle;
       document.getElementById('art-p1').innerHTML = t.artP1;
       document.getElementById('art-p2').innerHTML = t.artP2;
       document.getElementById('art-p3').innerHTML = t.artP3;
 
       // Fig 2
-      document.getElementById('fig2-header-title').innerText = t.fig2HeaderTitle;
-      document.getElementById('fig2-header-sub').innerText = t.fig2HeaderSub;
+      document.getElementById('fig2-title').innerText = t.fig2Title;
+      document.getElementById('fig2-sub').innerText = t.fig2Sub;
       document.getElementById('fig2-ring3-text').textContent = t.fig2Ring3Text;
       document.getElementById('fig2-ring2-title').textContent = t.fig2Ring2Title;
       document.getElementById('fig2-ring1-title').textContent = t.fig2Ring1Title;
@@ -644,29 +784,24 @@
       document.getElementById('layer3-desc').innerText = t.layer3Desc;
 
       // Pilares
-      document.getElementById('pillars-badge').innerText = t.pillarsBadge;
       document.getElementById('pillars-title').innerText = t.pillarsTitle;
-      document.getElementById('pilar1-tag').innerText = t.pilar1Tag;
+      document.getElementById('pillars-sub').innerText = t.pillarsSub;
       document.getElementById('pilar1-title').innerText = t.pilar1Title;
       document.getElementById('pilar1-desc').innerText = t.pilar1Desc;
-      document.getElementById('pilar2-tag').innerText = t.pilar2Tag;
       document.getElementById('pilar2-title').innerText = t.pilar2Title;
       document.getElementById('pilar2-desc').innerText = t.pilar2Desc;
-      document.getElementById('pilar3-tag').innerText = t.pilar3Tag;
       document.getElementById('pilar3-title').innerText = t.pilar3Title;
       document.getElementById('pilar3-desc').innerText = t.pilar3Desc;
 
       // Box 2 camadas
-      document.getElementById('layers-box-badge').innerText = t.layersBoxBadge;
       document.getElementById('layers-box-title').innerText = t.layersBoxTitle;
-      document.getElementById('box-l1-title').innerText = t.boxL1Title;
+      document.getElementById('layers-box-sub').innerText = t.layersBoxSub;
       document.getElementById('box-l1-desc').innerText = t.boxL1Desc;
-      document.getElementById('box-l2-title').innerText = t.boxL2Title;
       document.getElementById('box-l2-desc').innerText = t.boxL2Desc;
 
       // Passos
-      document.getElementById('steps-badge').innerText = t.stepsBadge;
       document.getElementById('steps-title').innerText = t.stepsTitle;
+      document.getElementById('steps-sub').innerText = t.stepsSub;
       document.getElementById('step1-title').innerText = t.step1Title;
       document.getElementById('step1-desc').innerText = t.step1Desc;
       document.getElementById('step1-btn').innerText = t.step1Btn;
@@ -679,6 +814,7 @@
 
       // FAQ
       document.getElementById('faq-title').innerText = t.faqTitle;
+      document.getElementById('faq-sub').innerText = t.faqSub;
       document.getElementById('faq1-q').innerText = t.faq1Q;
       document.getElementById('faq1-a').innerText = t.faq1A;
       document.getElementById('faq2-q').innerText = t.faq2Q;
@@ -702,16 +838,38 @@
         const span = btn.querySelector('.copy-btn-txt') || btn;
         const originalText = span.innerText;
         span.innerText = i18n[currentLang].copiedTxt;
-        btn.classList.add('bg-[#669BBC]/40', 'text-[#FDF0D5]');
+        btn.classList.add('bg-emerald-600', 'text-white');
         setTimeout(() => {
           span.innerText = originalText;
-          btn.classList.remove('bg-[#669BBC]/40', 'text-[#FDF0D5]');
+          btn.classList.remove('bg-emerald-600', 'text-white');
         }, 2000);
       });
     }
 
-    // Inicialização com persistência de idioma
+    // Scroll motion: adiciona estilo diretamente para o MutationObserver registrar movimento real
     document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.motion-item');
+      items.forEach((item) => {
+        item.style.opacity = '0.05';
+        item.style.transform = 'translateY(12px)';
+      });
+
+      const reveal = () => {
+        const trigger = window.innerHeight * 0.95;
+        items.forEach((item) => {
+          const rect = item.getBoundingClientRect();
+          if (rect.top <= trigger) {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0px)';
+          }
+        });
+      };
+
+      window.addEventListener('scroll', reveal, { passive: true });
+      // Dispara nos primeiros frames para revelar os elementos visíveis
+      setTimeout(reveal, 50);
+      setTimeout(reveal, 200);
+
       const savedLang = localStorage.getItem('lang') || 'pt';
       if (savedLang === 'en') {
         setLanguage('en');
